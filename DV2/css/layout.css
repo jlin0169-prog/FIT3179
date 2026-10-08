@@ -1,0 +1,382 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #F7F6F3;
+    color: #252525;
+    font-family: Arial, Helvetica,sans-serif;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 220px;
+    background-image: 
+        linear-gradient(
+            90deg,
+            rgba(20, 20, 20, 0.92) 0%,
+            rgba(20, 20, 20, 0.82) 40%,
+            rgba(20, 20, 20, 0.45) 70%,
+            rgba(20, 20, 20, 0.25) 100%
+        ),
+        url("../images/postal-hero.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+}
+
+/* Navigation */
+.nav {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    align-items: right;
+    gap: 38px;
+}
+
+.nav-links a{
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #DC1928;
+    opacity: 1;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 32px 60px;
+}
+
+/* Main title */
+.hero h1 {
+    margin: 0;
+    max-width: 600px;
+    font-size: clamp(38px, 6vw, 48px);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+}
+
+/* Red emphasis */
+.hero h1 span {
+    color: #DC1928;
+}
+
+/* Hero description */
+.hero-description {
+    max-width: 720px;
+    margin: 32px 0 0;
+    font-size: 19px;
+    line-height: 1.55;
+    color: #F2F2F2;
+}
+
+/* MAIN PAGE */
+.page-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 32px 120px;
+}
+
+/* Story sections */
+.story-section {
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+/* Section Header */
+.section-header {
+    width: 100%;
+    margin-bottom: 28px;
+    text-align: left;
+}
+
+/* Section Label */
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+/* Section number */
+.section-number {
+    color: #DC1928;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/* Section Line */
+.section-line {
+    width: 30px;
+    height: 3px;
+    background: #DC1928;
+}
+
+/* Section Category */
+.section-category {
+    color: #DC1928;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+/* Main section title */
+.section-header h2 {
+    margin: 0;
+    color: #252525;
+    font-size: 34px;
+    font-weight: 750;
+    line-height: 1.2;
+}
+
+/* Section introduction */
+.section-intro {
+    max-width: 8500px;
+    margin: 16px 0 0;
+    color: #606060;
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+/* Feature Chart */
+.feature-chart {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E4E2DE;
+    border-radius: 10px;
+    padding: 32px 34px 34px;
+    text-align: left;
+}
+
+/* Space between charts in the same section */
+.feature-chart + .feature-chart {
+    margin-top: 28px;
+}
+
+.feature-chart .vega-embed {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Chart title area */
+.chart-header {
+    width: 100%;
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.chart-header h3 {
+    margin: 0;
+    color: #252525;
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.chart-header p {
+    max-width: 1000px;
+    margin: 8px 0 0;
+    color: #707070;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* interpretation note */
+.note {
+    max-width: 900px;
+    margin: 18px auto 0;
+    padding: 12px 16px;
+    background: #F7F6F3;
+    border-left: 3px solid #DC1928;
+    border-radius: 4px;
+
+    color: #606060;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.note strong {
+    color: #252525;
+    font-weight: 700;
+}
+
+/* Radar chart reading guide */
+.radar-guide {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    width: fit-content;
+    margin: 4px 0 20px;
+    padding: 9px 14px;
+
+    background: #F7F6F3;
+    border-radius: 6px;
+
+    font-size: 13px;
+    line-height: 1.45;
+    color: #606060;
+}
+
+/* Radar chart reading guide */
+.radar-guide-label {
+    color: #DC1928;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.radar-guide p {
+    margin: 0;
+}
+
+.radar-guide strong {
+    color: #252525;
+}
+
+/* CHART */
+.chart-container {
+    width: 100%;
+    min-width: 0;
+    text-align: left;
+}   
+
+.chart3-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.chart-header-text {
+    min-width: 0;
+}
+
+.chart3-legend {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    flex-shrink: 0;
+
+    margin-top: 5px;
+
+    font-size: 13px;
+    color: #252525;
+}
+
+.chart3-legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.legend-dot {
+    display: inline-block;
+
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+}
+
+.legend-dot.revenue {
+    background: #7297BB;
+}
+
+.legend-dot.expenditure {
+    background: #F4A261;
+}
+
+.description h2,
+h1 {
+  margin-top: 0px;
+}
+
+.description-right {
+  padding: 50px 20px 0 40px;
+}
+
+.description-left {
+  padding-right: 20px;
+}
+
+.insight-main {
+    max-width: 320px;
+    margin: 0;
+    color: #252525;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.insight-detail {
+    max-width: 320px;
+    margin: 20px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid #D9D9D9;
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.pure-g {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.pure-g-2-3 {
+    width: 66.6667%;
+}
+
+.pure-g-1-3 {
+    width: 33.3333%;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+    .nav-links {
+        display: none;
+    }
+    .hero {
+        padding: 56px 24px 60px;
+    }
+    .hero h1 {
+        font-size: 48px;
+        letter-spacing: -1.5px;
+    }
+    .hero-description {
+        font-size: 17px;
+    }
+    .page-content {
+        padding: 60px 20px 100px;
+    }
+}
