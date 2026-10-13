@@ -22,7 +22,7 @@ const chart3 = {
         }
     },
     "spec": {
-        "width": 1000,
+        "width": 620,
         "height": 180,
         "encoding": {
             "y": {

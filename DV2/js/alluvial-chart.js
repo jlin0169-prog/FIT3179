@@ -3,7 +3,7 @@
 const chart2 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container",
-    "height": 400,
+    "height": 350,
     "background": null,
     "data": {
         "url": "data/letter_mix.csv"
@@ -57,7 +57,15 @@ const chart2 = {
                 "color": {
                     "field": "Category",
                     "type": "nominal",
-                    "title": "Letter category"
+                    "title": "Letter category",
+                    "legend": {
+                        "orient": "bottom",
+                        "direction": "horizontal",
+                        "columns": 3,
+                        "titleFontSize": 14,
+                        "labelFontSize": 11,
+                        "symbolSize": 100
+                    }
                 },
                 "detail": {
                     "field": "Category"
@@ -99,10 +107,7 @@ const chart2 = {
                     "type": "ordinal",
                     "sort": ["2006/07", "2023/24"],
                     "title": null,
-                    "axis": {
-                        "labelAngle": 0,
-                        "labelFontSize": 14
-                    }
+                    "axis": null
                 },
                 "y": {
                     "field": "y0",

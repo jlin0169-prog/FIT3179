@@ -1,11 +1,20 @@
 
-// Chart 5: When Did Online Shopping Surge? 
+// Chart 5: Online Food and Non-Food Shopping Horizon Chart
+
 const chart5 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "background": null,
+
     "data": {
         "url": "data/online_retail_monthly_change_multi.csv"
     },
+
     "transform": [
+        {
+            "filter": "datum.Category === 'Online Food Retailing' || datum.Category === 'Online Non-Food'"
+        },
+
         // Positive bands
         {
             "calculate": "max(0, min(datum.Monthly_Change, 10))",
@@ -47,17 +56,15 @@ const chart5 = {
         "row": {
             "field": "Category",
             "type": "nominal",
-
             "sort": [
                 "Online Food Retailing",
-                "Online Non-Food",
-                "Online Total"
+                "Online Non-Food"
             ],
             "header": {
                 "title": null,
                 "labelAngle": 0,
                 "labelAlign": "left",
-                "labelFontSize": 14,
+                "labelFontSize": 12,
                 "labelFontWeight": "bold",
                 "labelPadding": 8
             }
@@ -65,14 +72,20 @@ const chart5 = {
     },
 
     "spec": {
-        "width": 900,
-        "height": 90,
+        "width": 500,
+        "height": 145,
+
         "layer": [
-            // POSITIVE 0 to 10
-            {
+            // Positive bands
+            ...[
+                ["pos1", "#c6dbef"],
+                ["pos2", "#6baed6"],
+                ["pos3", "#2171b5"],
+                ["pos4", "#08306b"]
+            ].map(([field, color]) => ({
                 "mark": {
                     "type": "area",
-                    "color": "#c6dbef",
+                    "color": color,
                     "clip": true
                 },
                 "encoding": {
@@ -80,16 +93,14 @@ const chart5 = {
                         "field": "Date",
                         "type": "temporal",
                         "title": null,
-
                         "axis": {
                             "format": "%Y",
                             "tickCount": 12
                         }
                     },
                     "y": {
-                        "field": "pos1",
+                        "field": field,
                         "type": "quantitative",
-
                         "scale": {
                             "domain": [0, 10]
                         },
@@ -100,97 +111,18 @@ const chart5 = {
                         }
                     }
                 }
-            },
-            // POSITIVE 10 to 20
-            {
-                "mark": {
-                    "type": "area",
-                    "color": "#6baed6",
-                    "clip": true
-                },
-                "encoding": {
-                    "x": {
-                        "field": "Date",
-                        "type": "temporal"
-                    },
-                    "y": {
-                        "field": "pos2",
-                        "type": "quantitative",
-                        "scale": {
-                            "domain": [0, 10]
-                        }
-                    }
-                }
-            },
-            // POSITIVE 20 to 30
-            {
-                "mark": {
-                    "type": "area",
-                    "color": "#2171b5",
-                    "clip": true
-                },
-                "encoding": {
-                    "x": {
-                        "field": "Date",
-                        "type": "temporal"
-                    },
-                    "y": {
-                        "field": "pos3",
-                        "type": "quantitative",
-                        "scale": {
-                            "domain": [0, 10]
-                        }
-                    }
-                }
-            },
-            // POSITIVE 30 to 40
-            {
-                "mark": {
-                    "type": "area",
-                    "color": "#08306b",
-                    "clip": true
-                },
-                "encoding": {
-                    "x": {
-                        "field": "Date",
-                        "type": "temporal"
-                    },
-                    "y": {
-                        "field": "pos4",
-                        "type": "quantitative",
-                        "scale": {
-                            "domain": [0, 10]
-                        }
-                    }
-                }
-            },
-            // NEGATIVE 0 to 10
-            {
-                "mark": {
-                    "type": "area",
-                    "color": "#fdd0a2",
-                    "clip": true
-                },
-                "encoding": {
-                    "x": {
-                        "field": "Date",
-                        "type": "temporal"
-                    },
+            })),
 
-                    "y": {
-                        "field": "neg1",
-                        "type": "quantitative",
-                        "scale": {
-                            "domain": [0, 10]
-                        }
-                    }
-                }
-            },
-            // NEGATIVE 10 to 20
-            {
+            // Negative bands
+            ...[
+                ["neg1", "#fdd0a2"],
+                ["neg2", "#fd8d3c"],
+                ["neg3", "#e6550d"],
+                ["neg4", "#a63603"]
+            ].map(([field, color]) => ({
                 "mark": {
                     "type": "area",
-                    "color": "#fd8d3c",
+                    "color": color,
                     "clip": true
                 },
                 "encoding": {
@@ -198,59 +130,17 @@ const chart5 = {
                         "field": "Date",
                         "type": "temporal"
                     },
+                    "y": {
+                        "field": field,
+                        "type": "quantitative",
+                        "scale": {
+                            "domain": [0, 10]
+                        }
+                    }
+                }
+            })),
 
-                    "y": {
-                        "field": "neg2",
-                        "type": "quantitative",
-                        "scale": {
-                            "domain": [0, 10]
-                        }
-                    }
-                }
-            },
-            // NEGATIVE 20 to 30
-            {
-                "mark": {
-                    "type": "area",
-                    "color": "#e6550d",
-                    "clip": true
-                },
-                "encoding": {
-                    "x": {
-                        "field": "Date",
-                        "type": "temporal"
-                    },
-                    "y": {
-                        "field": "neg3",
-                        "type": "quantitative",
-                        "scale": {
-                            "domain": [0, 10]
-                        }
-                    }
-                }
-            },
-            // NEGATIVE 30 to 40
-            {
-                "mark": {
-                    "type": "area",
-                    "color": "#a63603",
-                    "clip": true
-                },
-                "encoding": {
-                    "x": {
-                        "field": "Date",
-                        "type": "temporal"
-                    },
-                    "y": {
-                        "field": "neg4",
-                        "type": "quantitative",
-                        "scale": {
-                            "domain": [0, 10]
-                        }
-                    }
-                }
-            },
-            // TOOLTIP
+            // Invisible tooltip points
             {
                 "mark": {
                     "type": "point",
@@ -286,15 +176,80 @@ const chart5 = {
                         }
                     ]
                 }
+            },
+
+            // Vertical annotation lines
+            {
+                "transform": [
+                    {
+                        "filter": "(datum.Category === 'Online Non-Food' && year(datum.Date) === 2020 && month(datum.Date) === 3) || (datum.Category === 'Online Food Retailing' && year(datum.Date) === 2020 && month(datum.Date) === 4)"
+                    }
+                ],
+                "mark": {
+                    "type": "rule",
+                    "color": "#555555",
+                    "strokeDash": [3, 3],
+                    "strokeWidth": 1.5
+                },
+                "encoding": {
+                    "x": {
+                        "field": "Date",
+                        "type": "temporal"
+                    },
+                    "y": {
+                        "datum": 0
+                    },
+                    "y2": {
+                        "datum": 10
+                    }
+                }
+            },
+
+            // Annotation labels
+            {
+                "transform": [
+                    {
+                        "filter": "(datum.Category === 'Online Non-Food' && year(datum.Date) === 2020 && month(datum.Date) === 3) || (datum.Category === 'Online Food Retailing' && year(datum.Date) === 2020 && month(datum.Date) === 4)"
+                    },
+                    {
+                        "calculate": "datum.Category === 'Online Non-Food' ? 'Apr 2020: +38.2%' : 'May 2020: +27.1%'",
+                        "as": "AnnotationLabel"
+                    }
+                ],
+                "mark": {
+                    "type": "text",
+                    "align": "left",
+                    "baseline": "top",
+                    "dx": 7,
+                    "dy": 5,
+                    "fontSize": 10,
+                    "fontWeight": "bold",
+                    "color": "#252525"
+                },
+                "encoding": {
+                    "x": {
+                        "field": "Date",
+                        "type": "temporal"
+                    },
+                    "y": {
+                        "datum": 10
+                    },
+                    "text": {
+                        "field": "AnnotationLabel",
+                        "type": "nominal"
+                    }
+                }
             }
         ]
     },
+
     "resolve": {
         "scale": {
             "x": "shared",
             "y": "shared"
         }
     },
+
     "config": {
         "view": {
             "stroke": null
@@ -303,7 +258,7 @@ const chart5 = {
             "grid": false
         },
         "facet": {
-            "spacing": 10
+            "spacing": 16
         }
     }
 };

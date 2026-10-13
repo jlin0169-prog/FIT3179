@@ -1,35 +1,17 @@
 
-// CHART 7: Australia's Online Shopping Hotspots
+ // Chart 7: Online Spending by State
 const chart7 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 650,
-    "height": 500,
-    "params": [
-        {
-            "name": "HotspotCategory",
-            "value": "Highest volume",
-            "bind": {
-                "input": "select",
-                "options": [
-                    "Highest volume",
-                    "Highest per capita",
-                    "Fastest growth"
-                ],
-                "labels": [
-                    "Highest shopping volume",
-                    "Highest volume per capita",
-                    "Fastest growth"
-                ],
-                "name": "Show: "
-            }
-        }
-    ],
+
+    "width": 480,
+    "height": 360,
 
     "projection": {
         "type": "mercator"
     },
+
     "layer": [
-        // Australia base map
+        // Layer 1: State choropleth
         {
             "data": {
                 "url": "js/states.geojson",
@@ -39,267 +21,74 @@ const chart7 = {
                 }
             },
 
-            "mark": {
-                "type": "geoshape",
-                "fill": "#E2E8E8",
-                "stroke": "#FFFFFF",
-                "strokeWidth": 1.5
-            }
-        },
-        // Hotspot circles
-        {
-            "data": {
-                "url": "data/online_shopping_hotspots.csv",
-                "format": {
-                    "type": "csv",
-                    "parse": {
-                        "Rank": "number",
-                        "Longitude": "number",
-                        "Latitude": "number"
-                    }
-                }
-            },
             "transform": [
                 {
-                    "filter": "datum.Category === HotspotCategory"
+                    "lookup": "properties.STATE_NAME",
+                    "from": {
+                        "data": {
+                            "url": "data/online_spending_by_state.csv"
+                        },
+                        "key": "State",
+                        "fields": [
+                            "Spending_Billion",
+                            "Growth"
+                        ]
+                    }
                 }
             ],
+
             "mark": {
-                "type": "circle",
-                "color": "#527298",
-                "stroke": "white",
-                "strokeWidth": 2
+                "type": "geoshape",
+                "stroke": "#FFFFFF",
+                "strokeWidth": 1
             },
+
             "encoding": {
-                "longitude": {
-                    "field": "Longitude",
-                    "type": "quantitative"
-                },
-                "latitude": {
-                    "field": "Latitude",
-                    "type": "quantitative"
-                },
-                "size": {
-                    "field": "Rank",
-                    "type": "ordinal",
+                "color": {
+                    "field": "Spending_Billion",
+                    "type": "quantitative",
+                    "title": "Online spending ($b)",
                     "scale": {
-                        "domain": [1, 2, 3],
-                        "range": [1700, 900, 250]
+                        "scheme": "yellowgreenblue"
                     },
-                    "legend": null
+                    "legend": {
+                        "orient": "right",
+                        "gradientLength": 180,
+                        "titleFontSize": 13,
+                        "labelFontSize": 12
+                    }
                 },
+
                 "tooltip": [
                     {
-                        "field": "Rank",
+                        "field": "properties.STATE_NAME",
+                        "type": "nominal",
+                        "title": "State / Territory"
+                    },
+                    {
+                        "field": "Spending_Billion",
                         "type": "quantitative",
-                        "title": "Rank"
+                        "title": "Online spending ($b)",
+                        "format": ".1f"
                     },
                     {
-                        "field": "Location",
-                        "type": "nominal",
-                        "title": "Location"
-                    },
-                    {
-                        "field": "Postcode",
-                        "type": "nominal",
-                        "title": "Postcode"
-                    },
-                    {
-                        "field": "State",
-                        "type": "nominal",
-                        "title": "State"
-                    },
-                    {
-                        "field": "Category",
-                        "type": "nominal",
-                        "title": "Category"
+                        "field": "Growth",
+                        "type": "quantitative",
+                        "title": "YoY growth (%)",
+                        "format": ".1f"
                     }
                 ]
             }
         },
-        // Rank numbers
-        {
-            "data": {
-                "url": "data/online_shopping_hotspots.csv",
-                "format": {
-                    "type": "csv",
-                    "parse": {
-                        "Rank": "number",
-                        "Longitude": "number",
-                        "Latitude": "number"
-                    }
-                }
-            },
-            "transform": [
-                {
-                    "filter": "datum.Category === HotspotCategory"
-                }
-            ],
-            "mark": {
-                "type": "text",
-                "fontSize": 13,
-                "fontWeight": "bold",
-                "color": "white"
-            },
-            "encoding": {
-                "longitude": {
-                    "field": "Longitude",
-                    "type": "quantitative"
-                },
-                "latitude": {
-                    "field": "Latitude",
-                    "type": "quantitative"
-                },
-                "text": {
-                    "field": "Rank"
-                }
-            }
-        },
-        // Normal location labels
-        // Exclude Sydney and Alexandria because they need special positioning
-        {
-            "data": {
-                "url": "data/online_shopping_hotspots.csv",
-                "format": {
-                    "type": "csv",
-                    "parse": {
-                        "Rank": "number",
-                        "Longitude": "number",
-                        "Latitude": "number"
-                    }
-                }
-            },
-            "transform": [
-                {
-                    "filter": "datum.Category === HotspotCategory"
-                },
-                {
-                    "filter":
-                        "datum.Location !== 'Sydney' && datum.Location !== 'Alexandria'"
-                }
-            ],
-            "mark": {
-                "type": "text",
-                "dx": 24,
-                "align": "left",
-                "baseline": "middle",
-                "fontSize": 12,
-                "fontWeight": "bold",
-                "color": "#333333"
-            },
-            "encoding": {
-                "longitude": {
-                    "field": "Longitude",
-                    "type": "quantitative"
-                },
-
-                "latitude": {
-                    "field": "Latitude",
-                    "type": "quantitative"
-                },
-
-                "text": {
-                    "field": "Location"
-                }
-            }
-        },
-        // Sydney label
-        // Put above the Sydney point
-        {
-            "data": {
-                "url": "data/online_shopping_hotspots.csv",
-                "format": {
-                    "type": "csv",
-                    "parse": {
-                        "Longitude": "number",
-                        "Latitude": "number"
-                    }
-                }
-            },
-            "transform": [
-                {
-                    "filter":
-                        "datum.Category === HotspotCategory && datum.Location === 'Sydney'"
-                }
-            ],
-            "mark": {
-                "type": "text",
-                "dx": 28,
-                "dy": -25,
-                "align": "left",
-                "baseline": "middle",
-                "fontSize": 12,
-                "fontWeight": "bold",
-                "color": "#333333"
-            },
-            "encoding": {
-                "longitude": {
-                    "field": "Longitude",
-                    "type": "quantitative"
-                },
-                "latitude": {
-                    "field": "Latitude",
-                    "type": "quantitative"
-                },
-                "text": {
-                    "field": "Location"
-                }
-            }
-        },
-        // Alexandria label
-        // Put below the Alexandria point
-        {
-            "data": {
-                "url": "data/online_shopping_hotspots.csv",
-                "format": {
-                    "type": "csv",
-                    "parse": {
-                        "Longitude": "number",
-                        "Latitude": "number"
-                    }
-                }
-            },
-            "transform": [
-                {
-                    "filter":
-                        "datum.Category === HotspotCategory && datum.Location === 'Alexandria'"
-                }
-            ],
-            "mark": {
-                "type": "text",
-                "dx": 28,
-                "dy": 25,
-                "align": "left",
-                "baseline": "middle",
-                "fontSize": 12,
-                "fontWeight": "bold",
-                "color": "#333333"
-            },
-            "encoding": {
-                "longitude": {
-                    "field": "Longitude",
-                    "type": "quantitative"
-                },
-                "latitude": {
-                    "field": "Latitude",
-                    "type": "quantitative"
-                },
-                "text": {
-                    "field": "Location"
-                }
-            }
-        }
     ],
+
     "config": {
-
-        "background": "#F3FAF9",
-
         "view": {
             "stroke": null
         },
         "legend": {
-            "labelFontSize": 12,
-            "titleFontSize": 13
+            "labelFont": "Arial",
+            "titleFont": "Arial"
         }
     }
 };

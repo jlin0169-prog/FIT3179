@@ -1,6 +1,8 @@
+/* GLOBAL RESET */
 * {
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -9,13 +11,13 @@ body {
     margin: 0;
     background: #F7F6F3;
     color: #252525;
-    font-family: Arial, Helvetica,sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Hero Section */
+/* HERO SECTION */
 .hero {
     min-height: 220px;
-    background-image: 
+    background-image:
         linear-gradient(
             90deg,
             rgba(20, 20, 20, 0.92) 0%,
@@ -30,7 +32,7 @@ body {
     color: #FFFFFF;
 }
 
-/* Navigation */
+/* NAVIGATION */
 .nav {
     width: 100%;
     max-width: 1200px;
@@ -43,11 +45,11 @@ body {
 
 .nav-links {
     display: flex;
-    align-items: right;
+    align-items: center;
     gap: 38px;
 }
 
-.nav-links a{
+.nav-links a {
     color: #FFFFFF;
     text-decoration: none;
     font-size: 14px;
@@ -68,7 +70,6 @@ body {
     padding: 10px 32px 60px;
 }
 
-/* Main title */
 .hero h1 {
     margin: 0;
     max-width: 600px;
@@ -79,12 +80,10 @@ body {
     color: #FFFFFF;
 }
 
-/* Red emphasis */
 .hero h1 span {
     color: #DC1928;
 }
 
-/* Hero description */
 .hero-description {
     max-width: 720px;
     margin: 32px 0 0;
@@ -101,20 +100,17 @@ body {
     padding: 40px 32px 120px;
 }
 
-/* Story sections */
 .story-section {
     width: 100%;
     margin-bottom: 80px;
 }
 
-/* Section Header */
 .section-header {
     width: 100%;
     margin-bottom: 28px;
     text-align: left;
 }
 
-/* Section Label */
 .section-label {
     display: flex;
     align-items: center;
@@ -122,21 +118,18 @@ body {
     margin-bottom: 14px;
 }
 
-/* Section number */
 .section-number {
     color: #DC1928;
     font-size: 18px;
     font-weight: 800;
 }
 
-/* Section Line */
 .section-line {
     width: 30px;
     height: 3px;
     background: #DC1928;
 }
 
-/* Section Category */
 .section-category {
     color: #DC1928;
     font-size: 15px;
@@ -144,7 +137,6 @@ body {
     letter-spacing: 1.5px;
 }
 
-/* Main section title */
 .section-header h2 {
     margin: 0;
     color: #252525;
@@ -153,18 +145,18 @@ body {
     line-height: 1.2;
 }
 
-/* Section introduction */
 .section-intro {
-    max-width: 8500px;
+    max-width: 800px;
     margin: 16px 0 0;
     color: #606060;
     font-size: 17px;
     line-height: 1.65;
 }
 
-/* Feature Chart */
+/* CHART CARDS */
 .feature-chart {
     width: 100%;
+    min-width: 0;
     background: #FFFFFF;
     border: 1px solid #E4E2DE;
     border-radius: 10px;
@@ -172,7 +164,6 @@ body {
     text-align: left;
 }
 
-/* Space between charts in the same section */
 .feature-chart + .feature-chart {
     margin-top: 28px;
 }
@@ -182,7 +173,6 @@ body {
     max-width: 100%;
 }
 
-/* Chart title area */
 .chart-header {
     width: 100%;
     margin-bottom: 22px;
@@ -205,7 +195,14 @@ body {
     line-height: 1.5;
 }
 
-/* interpretation note */
+.chart-container {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    text-align: left;
+}
+
+/* SMALL INTERPRETATION NOTES INSIDE CHART CARDS */
 .note {
     max-width: 900px;
     margin: 18px auto 0;
@@ -213,7 +210,6 @@ body {
     background: #F7F6F3;
     border-left: 3px solid #DC1928;
     border-radius: 4px;
-
     color: #606060;
     font-size: 14px;
     line-height: 1.55;
@@ -224,48 +220,7 @@ body {
     font-weight: 700;
 }
 
-/* Radar chart reading guide */
-.radar-guide {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-
-    width: fit-content;
-    margin: 4px 0 20px;
-    padding: 9px 14px;
-
-    background: #F7F6F3;
-    border-radius: 6px;
-
-    font-size: 13px;
-    line-height: 1.45;
-    color: #606060;
-}
-
-/* Radar chart reading guide */
-.radar-guide-label {
-    color: #DC1928;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    white-space: nowrap;
-}
-
-.radar-guide p {
-    margin: 0;
-}
-
-.radar-guide strong {
-    color: #252525;
-}
-
-/* CHART */
-.chart-container {
-    width: 100%;
-    min-width: 0;
-    text-align: left;
-}   
-
+/* CHART 3 */
 .chart3-header {
     display: flex;
     justify-content: space-between;
@@ -273,39 +228,66 @@ body {
     gap: 30px;
 }
 
+.chart3-header .chart-legend {
+    margin: 5px 0 0;
+    flex-shrink: 0;
+}
+
 .chart-header-text {
     min-width: 0;
 }
 
-.chart3-legend {
+
+/* GLOBAL CHART LEGEND */
+.chart-legend {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 16px;
+    justify-content: flex-start;
+    gap: 12px 24px;
 
-    flex-shrink: 0;
-
-    margin-top: 5px;
+    margin: 0 0 20px;
+    padding: 0;
 
     font-size: 13px;
-    color: #252525;
+    color: #444444;
 }
 
-.chart3-legend span {
-    display: flex;
+.legend-item {
+    display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    white-space: nowrap;
 }
-
 
 .legend-dot {
     display: inline-block;
-
-    width: 11px;
-    height: 11px;
-
-    border-radius: 50%;
+    width: 13px;
+    height: 13px;
+    border-radius: 3px;
+    flex-shrink: 0;
 }
 
+.legend-note {
+    font-size: 12px;
+    color: #777777;
+}
+
+/* LEGEND COLOURS */
+
+/* Chart 1 */
+.legend-dot.letters {
+    background: #7297BB;
+}
+
+.legend-line.delivery-points {
+    display: inline-block;
+    width: 24px;
+    height: 0;
+    border-top: 3px solid #DC1928;
+}
+
+/* Chart 3 */
 .legend-dot.revenue {
     background: #7297BB;
 }
@@ -314,17 +296,37 @@ body {
     background: #F4A261;
 }
 
+/* Chart 5 */
+.legend-dot.decrease {
+    background: #F28C45;
+}
+
+.legend-dot.increase {
+    background: #368BC5;
+}
+
+/* Chart 8 */
+.legend-dot.facility-office {
+    background: #C62828;
+}
+
+.legend-dot.facility-box {
+    background: #267DA8;
+}
+
+
+/* SHARED INSIGHT TYPOGRAPHY (SIDE OR BOTTOM) */
 .description h2,
-h1 {
-  margin-top: 0px;
+.description h1 {
+    margin-top: 0;
 }
 
 .description-right {
-  padding: 50px 20px 0 40px;
+    padding: 50px 0 0 40px;
 }
 
 .description-left {
-  padding-right: 20px;
+    padding-right: 20px;
 }
 
 .insight-main {
@@ -346,37 +348,176 @@ h1 {
     line-height: 1.55;
 }
 
+
+/* SIDE-BY-SIDE CHART ROWS */
 .pure-g {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  margin-bottom: 40px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    margin-bottom: 40px;
 }
 
-.pure-g-2-3 {
+.story-section > .feature-chart + .pure-g {
+    margin-top: 40px;
+}
+
+.pure-u-2-3 {
     width: 66.6667%;
+    min-width: 0;
 }
 
-.pure-g-1-3 {
+.pure-u-1-3 {
     width: 33.3333%;
+    min-width: 0;
 }
+
+/* Consistent gap between chart and analysis */
+.pure-g > .pure-u-2-3 {
+    width: 66.6667%;
+    padding-right: 20px;
+}
+
+.pure-g > .pure-u-1-3 {
+    width: 33.3333%;
+    padding-left: 20px;
+}
+
+/* Avoid adding the gap twice */
+.pure-g .description-right {
+    padding: 50px 0 0;
+}
+
+
+/* LETTER MIX */
+.letter-mix-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.letter-mix-years {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333333;
+}
+
+
+/* CHART 8: HORIZONTAL FILTER CONTROLS */
+#chart8 .vega-bindings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 24px;
+
+    margin: 16px 0 20px;
+    padding: 12px 16px;
+
+    background: #F7F6F3;
+    border-radius: 6px;
+}
+
+#chart8 .vega-bind {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: 13px;
+}
+
+#chart8 .vega-bind-name {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#chart8 .vega-bind select {
+    max-width: 160px;
+    padding: 5px 8px;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    background: #FFFFFF;
+}
+
+#chart8 .vega-bind input[type="range"] {
+    width: 110px;
+    accent-color: #DC1928;
+}
+
+@media (max-width: 800px) {
+    #chart8 .vega-bindings {
+        gap: 12px;
+    }
+}
+
+
 
 /* RESPONSIVE */
 @media (max-width: 800px) {
     .nav-links {
         display: none;
     }
+
     .hero {
         padding: 56px 24px 60px;
     }
+
     .hero h1 {
         font-size: 48px;
         letter-spacing: -1.5px;
     }
+
     .hero-description {
         font-size: 17px;
     }
+
     .page-content {
         padding: 60px 20px 100px;
+    }
+
+    .pure-u-2-3,
+    .pure-u-1-3 {
+        width: 100%;
+    }
+
+    .description-right {
+        padding: 24px 0 0;
+    }
+
+    .pure-g {
+        margin-bottom: 24px;
+    }
+
+    .pure-g > .pure-u-2-3,
+    .pure-g > .pure-u-1-3 {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .pure-g .description-right {
+        padding: 24px 0 0;
+    }
+
+    .feature-chart {
+        padding: 24px 20px;
+    }
+
+    .insight-bottom {
+        max-width: 100%;
+        margin-top: 24px;
+        padding: 0;
+    }
+
+    .chart-legend {
+        gap: 10px 16px;
+        font-size: 12px;
+    }
+
+    .chart3-header {
+        flex-wrap: wrap;
     }
 }

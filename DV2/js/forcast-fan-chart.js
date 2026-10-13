@@ -2,8 +2,8 @@
 const chart11 = {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": 800,
-  "height": 450,
+  "width": "container",
+  "height": 400,
   "data": {
     "url": "data/letter_volume_forecast.csv",
     "format": {
