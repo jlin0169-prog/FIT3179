@@ -1,341 +1,204 @@
-// // CHART 8: Australia's Online Shopping Hotspots
-// const chart8 = {
-//     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-//     "width": 650,
-//     "height": 500,
-//     "params": [
-//         {
-//             "name": "HotspotCategory",
-//             "value": "Highest volume",
-//             "bind": {
-//                 "input": "select",
-//                 "options": [
-//                     "Highest volume",
-//                     "Highest per capita",
-//                     "Fastest growth"
-//                 ],
-//                 "labels": [
-//                     "Highest shopping volume",
-//                     "Highest volume per capita",
-//                     "Fastest growth"
-//                 ],
-//                 "name": "Show: "
-//             }
-//         },
-//         {
-//             "name": "zoom_level",
-//             "value": 650,
-//             "bind": {
-//                 "input": "range",
-//                 "min": 400,
-//                 "max": 4000,
-//                 "step": 50,
-//                 "name": "Zoom: "
-//             }
-//         },
-//         {
-//             "name": "center_to",
-//             "value": [134, -25],
-//             "bind": {
-//                 "input": "select",
-//                 "options": [
-//                     [134, -25],
-//                     [151.21, -33.87],
-//                     [144.96, -37.81],
-//                     [153.03, -27.47],
-//                     [115.86, -31.95],
-//                     [138.60, -34.93]
-//                 ],
-//                 "labels": [
-//                     "Australia",
-//                     "Sydney",
-//                     "Melbourne",
-//                     "Brisbane",
-//                     "Perth",
-//                     "Adelaide"
-//                 ],
-//                 "name": "Map Centre: "
-//             }
-//         }
-//     ],
+const chart9 = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-//     "projection": {
-//         "type": "mercator",
-//         "center": {"expr": "center_to"},
-//         "scale": {"expr": "zoom_level"}
-//     },
-//     "layer": [
-//         // Australia base map
-//         {
-//             "data": {
-//                 "url": "js/states.geojson",
-//                 "format": {
-//                     "type": "json",
-//                     "property": "features"
-//                 }
-//             },
+    "width": 500,
+    "height": 480,
+    "background": null,
 
-//             "mark": {
-//                 "type": "geoshape",
-//                 "fill": "#E2E8E8",
-//                 "stroke": "#FFFFFF",
-//                 "strokeWidth": 1.5
-//             }
-//         },
-//         // Hotspot circles
-//         {
-//             "data": {
-//                 "url": "data/online_shopping_hotspots.csv",
-//                 "format": {
-//                     "type": "csv",
-//                     "parse": {
-//                         "Rank": "number",
-//                         "Longitude": "number",
-//                         "Latitude": "number"
-//                     }
-//                 }
-//             },
-//             "transform": [
-//                 {
-//                     "filter": "datum.Category === HotspotCategory"
-//                 }
-//             ],
-//             "mark": {
-//                 "type": "circle",
-//                 "color": "#527298",
-//                 "stroke": "white",
-//                 "strokeWidth": 2
-//             },
-//             "encoding": {
-//                 "longitude": {
-//                     "field": "Longitude",
-//                     "type": "quantitative"
-//                 },
-//                 "latitude": {
-//                     "field": "Latitude",
-//                     "type": "quantitative"
-//                 },
-//                 "size": {
-//                     "field": "Rank",
-//                     "type": "ordinal",
-//                     "scale": {
-//                         "domain": [1, 2, 3],
-//                         "range": [1700, 900, 250]
-//                     },
-//                     "legend": null
-//                 },
-//                 "tooltip": [
-//                     {
-//                         "field": "Rank",
-//                         "type": "quantitative",
-//                         "title": "Rank"
-//                     },
-//                     {
-//                         "field": "Location",
-//                         "type": "nominal",
-//                         "title": "Location"
-//                     },
-//                     {
-//                         "field": "Postcode",
-//                         "type": "nominal",
-//                         "title": "Postcode"
-//                     },
-//                     {
-//                         "field": "State",
-//                         "type": "nominal",
-//                         "title": "State"
-//                     },
-//                     {
-//                         "field": "Category",
-//                         "type": "nominal",
-//                         "title": "Category"
-//                     }
-//                 ]
-//             }
-//         },
-//         // Rank numbers
-//         {
-//             "data": {
-//                 "url": "data/online_shopping_hotspots.csv",
-//                 "format": {
-//                     "type": "csv",
-//                     "parse": {
-//                         "Rank": "number",
-//                         "Longitude": "number",
-//                         "Latitude": "number"
-//                     }
-//                 }
-//             },
-//             "transform": [
-//                 {
-//                     "filter": "datum.Category === HotspotCategory"
-//                 }
-//             ],
-//             "mark": {
-//                 "type": "text",
-//                 "fontSize": 13,
-//                 "fontWeight": "bold",
-//                 "color": "white"
-//             },
-//             "encoding": {
-//                 "longitude": {
-//                     "field": "Longitude",
-//                     "type": "quantitative"
-//                 },
-//                 "latitude": {
-//                     "field": "Latitude",
-//                     "type": "quantitative"
-//                 },
-//                 "text": {
-//                     "field": "Rank"
-//                 }
-//             }
-//         },
-//         // Normal location labels
-//         // Exclude Sydney and Alexandria because they need special positioning
-//         {
-//             "data": {
-//                 "url": "data/online_shopping_hotspots.csv",
-//                 "format": {
-//                     "type": "csv",
-//                     "parse": {
-//                         "Rank": "number",
-//                         "Longitude": "number",
-//                         "Latitude": "number"
-//                     }
-//                 }
-//             },
-//             "transform": [
-//                 {
-//                     "filter": "datum.Category === HotspotCategory"
-//                 },
-//                 {
-//                     "filter":
-//                         "datum.Location !== 'Sydney' && datum.Location !== 'Alexandria'"
-//                 }
-//             ],
-//             "mark": {
-//                 "type": "text",
-//                 "dx": 24,
-//                 "align": "left",
-//                 "baseline": "middle",
-//                 "fontSize": 12,
-//                 "fontWeight": "bold",
-//                 "color": "#333333"
-//             },
-//             "encoding": {
-//                 "longitude": {
-//                     "field": "Longitude",
-//                     "type": "quantitative"
-//                 },
+    "projection": {
+        "type": "mercator"
+    },
 
-//                 "latitude": {
-//                     "field": "Latitude",
-//                     "type": "quantitative"
-//                 },
+    "layer": [
+        // 1. Australian state boundaries
+        {
+            "data": {
+                "url": "js/states.geojson",
+                "format": {
+                    "type": "json",
+                    "property": "features"
+                }
+            },
 
-//                 "text": {
-//                     "field": "Location"
-//                 }
-//             }
-//         },
-//         // Sydney label
-//         // Put above the Sydney point
-//         {
-//             "data": {
-//                 "url": "data/online_shopping_hotspots.csv",
-//                 "format": {
-//                     "type": "csv",
-//                     "parse": {
-//                         "Longitude": "number",
-//                         "Latitude": "number"
-//                     }
-//                 }
-//             },
-//             "transform": [
-//                 {
-//                     "filter":
-//                         "datum.Category === HotspotCategory && datum.Location === 'Sydney'"
-//                 }
-//             ],
-//             "mark": {
-//                 "type": "text",
-//                 "dx": 28,
-//                 "dy": -25,
-//                 "align": "left",
-//                 "baseline": "middle",
-//                 "fontSize": 12,
-//                 "fontWeight": "bold",
-//                 "color": "#333333"
-//             },
-//             "encoding": {
-//                 "longitude": {
-//                     "field": "Longitude",
-//                     "type": "quantitative"
-//                 },
-//                 "latitude": {
-//                     "field": "Latitude",
-//                     "type": "quantitative"
-//                 },
-//                 "text": {
-//                     "field": "Location"
-//                 }
-//             }
-//         },
-//         // Alexandria label
-//         // Put below the Alexandria point
-//         {
-//             "data": {
-//                 "url": "data/online_shopping_hotspots.csv",
-//                 "format": {
-//                     "type": "csv",
-//                     "parse": {
-//                         "Longitude": "number",
-//                         "Latitude": "number"
-//                     }
-//                 }
-//             },
-//             "transform": [
-//                 {
-//                     "filter":
-//                         "datum.Category === HotspotCategory && datum.Location === 'Alexandria'"
-//                 }
-//             ],
-//             "mark": {
-//                 "type": "text",
-//                 "dx": 28,
-//                 "dy": 25,
-//                 "align": "left",
-//                 "baseline": "middle",
-//                 "fontSize": 12,
-//                 "fontWeight": "bold",
-//                 "color": "#333333"
-//             },
-//             "encoding": {
-//                 "longitude": {
-//                     "field": "Longitude",
-//                     "type": "quantitative"
-//                 },
-//                 "latitude": {
-//                     "field": "Latitude",
-//                     "type": "quantitative"
-//                 },
-//                 "text": {
-//                     "field": "Location"
-//                 }
-//             }
-//         }
-//     ],
-//     "config": {
+            "mark": {
+                "type": "geoshape",
+                "fill": "#E5E9ED",
+                "stroke": "#FFFFFF",
+                "strokeWidth": 1.5
+            }
+        },
 
-//         "background": "#F3FAF9",
+        // 2. Proportional circles
+        {
+            "data": {
+                "url": "data/parcel_growth_by_state.csv",
+                "format": {
+                    "type": "csv",
+                    "parse": {
+                        "Growth": "number"
+                    }
+                }
+            },
 
-//         "view": {
-//             "stroke": null
-//         },
-//         "legend": {
-//             "labelFontSize": 12,
-//             "titleFontSize": 13
-//         }
-//     }
-// };
+            "transform": [
+                {
+                    "lookup": "Abbreviation",
+                    "from": {
+                        "data": {
+                            "values": [
+                                { "Abbreviation": "WA", "Longitude": 121, "Latitude": -26 },
+                                { "Abbreviation": "NT", "Longitude": 133, "Latitude": -19 },
+                                { "Abbreviation": "SA", "Longitude": 135, "Latitude": -30 },
+                                { "Abbreviation": "QLD", "Longitude": 145, "Latitude": -22 },
+                                { "Abbreviation": "NSW", "Longitude": 147, "Latitude": -32 },
+                                { "Abbreviation": "VIC", "Longitude": 144, "Latitude": -37 },
+                                { "Abbreviation": "TAS", "Longitude": 147, "Latitude": -42 },
+                                { "Abbreviation": "ACT", "Longitude": 149.1, "Latitude": -35.3 }
+                            ]
+                        },
+                        "key": "Abbreviation",
+                        "fields": ["Longitude", "Latitude"]
+                    }
+                }
+            ],
+
+            "mark": {
+                "type": "circle",
+                "color": "#8E3B56",
+                "opacity": 0.88,
+                "stroke": "#FFFFFF",
+                "strokeWidth": 1.5
+            },
+
+            "encoding": {
+                "longitude": {
+                    "field": "Longitude",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "Latitude",
+                    "type": "quantitative"
+                },
+
+                "size": {
+                    "field": "Growth",
+                    "type": "quantitative",
+                    "title": "Parcel growth (%)",
+                    "scale": {
+                        "type": "linear",
+                        "domain": [0, 13],
+                        "range": [30, 2200]
+                    },
+                    "legend": {
+                        "orient": "right",
+                        "format": ".0f",
+                        "values": [4, 8, 12],
+                        "symbolFillColor": "#8E3B56",
+                        "symbolStrokeColor": "#FFFFFF"
+                    }
+                },
+
+                "tooltip": [
+                    {
+                        "field": "State",
+                        "type": "nominal",
+                        "title": "State / Territory"
+                    },
+                    {
+                        "field": "Growth",
+                        "type": "quantitative",
+                        "title": "Parcel-volume growth (%)",
+                        "format": ".1f"
+                    }
+                ]
+            }
+        },
+
+        // 3. Labels for highest and lowest growth rates
+        {
+            "data": {
+                "url": "data/parcel_growth_by_state.csv"
+            },
+
+            "transform": [
+                {
+                    "calculate": "toNumber(datum.Growth)",
+                    "as": "GrowthNum"
+                },
+                {
+                    "filter": "datum.Abbreviation === 'NT' || datum.Abbreviation === 'TAS' || datum.Abbreviation === 'ACT'"
+                },
+                {
+                    "lookup": "Abbreviation",
+                    "from": {
+                        "data": {
+                            "values": [
+                                {
+                                    "Abbreviation": "NT",
+                                    "LabelLongitude": 133,
+                                    "LabelLatitude": -15.5
+                                },
+                                {
+                                    "Abbreviation": "TAS",
+                                    "LabelLongitude": 150,
+                                    "LabelLatitude": -42
+                                },
+                                {
+                                    "Abbreviation": "ACT",
+                                    "LabelLongitude": 150,
+                                    "LabelLatitude": -34.5
+                                }
+                            ]
+                        },
+                        "key": "Abbreviation",
+                        "fields": [
+                            "LabelLongitude",
+                            "LabelLatitude"
+                        ]
+                    }
+                },
+                {
+                    "calculate": "datum.State + ': ' + format(datum.GrowthNum, '.1f') + '%'",
+                    "as": "AnnotationLabel"
+                }
+            ],
+
+            "mark": {
+                "type": "text",
+                "fontSize": 11,
+                "fontWeight": "bold",
+                "color": "#542033",
+                "align": "left",
+                "baseline": "middle"
+            },
+
+            "encoding": {
+                "longitude": {
+                    "field": "LabelLongitude",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "LabelLatitude",
+                    "type": "quantitative"
+                },
+                "text": {
+                    "field": "AnnotationLabel",
+                    "type": "nominal"
+                }
+            }
+        }
+    ],
+
+    "config": {
+        "view": {
+            "stroke": null
+        },
+        "legend": {
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "labelColor": "#555555",
+            "titleColor": "#26384E",
+            "padding": 20
+        }
+    }
+};

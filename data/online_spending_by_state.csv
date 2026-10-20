@@ -1,9 +1,9 @@
-State,Spending_Billion,Growth
-New South Wales,26.4,13.0
-Victoria,20.0,13.0
-Queensland,17.8,15.0
-Western Australia,9.1,18.0
-South Australia,5.4,14.0
-Australian Capital Territory,1.7,10.0
-Tasmania,1.6,13.0
-Northern Territory,0.5,14.0
+State,Spending_Billion,Growth,Population_2025,Spending_Per_Capita
+New South Wales,26.4,13.0,8641100,3089.49
+Victoria,20.0,13.0,7121900,2852.62
+Queensland,17.8,15.0,5712100,3167.93
+Western Australia,9.1,18.0,3076500,3024.56
+South Australia,5.4,14.0,1910600,2854.57
+Australian Capital Territory,1.7,10.0,487200,3529.17
+Tasmania,1.6,13.0,579100,2778.74
+Northern Territory,0.5,14.0,267500,1906.94
