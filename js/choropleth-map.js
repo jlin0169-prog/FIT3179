@@ -11,7 +11,7 @@ const chart7 = {
   hconcat: [
     // LEFT: NORMALISED CHOROPLETH
     {
-      width: 310,
+      width: 300,
       height: 320,
 
       title: {
@@ -145,7 +145,7 @@ const chart7 = {
 
     // RIGHT: LINKED BAR CHART
     {
-      width: 180,
+      width: 170,
       height: 300,
 
       title: {
@@ -161,14 +161,6 @@ const chart7 = {
       data: {
         url: "data/online_spending_by_state.csv"
       },
-
-    //   transform: [
-    //     {
-    //       filter: {
-    //         param: "selectedState"
-    //       }
-    //     }
-    //   ],
 
       mark: {
         type: "bar",
@@ -238,7 +230,7 @@ const chart7 = {
     }
   ],
 
-  spacing: 10,
+  spacing: 8,
 
   config: {
     view: {

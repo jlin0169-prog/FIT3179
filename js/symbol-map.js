@@ -2,11 +2,11 @@ const chart9 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
     "width": 500,
-    "height": 480,
+    "height": 400,
     "background": null,
 
     "projection": {
-        "type": "mercator"
+        "type": "mercator",
     },
 
     "layer": [
@@ -90,11 +90,16 @@ const chart9 = {
                         "range": [30, 2200]
                     },
                     "legend": {
-                        "orient": "right",
+                        "orient": "bottom",
                         "format": ".0f",
-                        "values": [4, 8, 12],
+                        "values": [3, 6, 9, 12],
                         "symbolFillColor": "#8E3B56",
-                        "symbolStrokeColor": "#FFFFFF"
+                        "symbolStrokeColor": "#FFFFFF",
+                        "offset": 0,
+                        "padding": 0,
+                        "titlePadding": 5,
+                        "labelFontSize": 11,
+                        "titleFontSize": 12
                     }
                 },
 

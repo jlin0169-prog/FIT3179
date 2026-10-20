@@ -69,7 +69,7 @@ const chart5 = {
     },
 
     "spec": {
-        "width": 470,
+        "width": 450,
         "height": 145,
 
         "layer": [
