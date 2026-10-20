@@ -3,11 +3,13 @@ const chart1 = {
     "width": "container",
     "height": 340,
     "background": null,
+
     "data": {
         "url": "data/postal_paradox.csv"
     },
+
     "layer": [
-        // Blue bars: Addressed letter volume
+        // 1. Addressed letter volume (blue bars)
         {
             "mark": {
                 "type": "bar",
@@ -49,29 +51,27 @@ const chart1 = {
                     {
                         "field": "Letter_Volume_Billion",
                         "type": "quantitative",
-                        "title": "Addressed letters (billion)",
-                        "format": ".1f"
+                        "title": "Letters (billion)",
+                        "format": ".2f"
                     }
                 ]
             }
         },
 
-        // Red line: Delivery points
+        // 2. Delivery points (gold line)
         {
             "mark": {
                 "type": "line",
-                "color": "#DC1928",
+                "color": "#C9872C",
                 "strokeWidth": 3,
                 "point": false
             },
-
             "encoding": {
                 "x": {
                     "field": "Year",
                     "type": "ordinal",
                     "sort": "ascending"
                 },
-
                 "y": {
                     "field": "Delivery_Points_Million",
                     "type": "quantitative",
@@ -83,28 +83,28 @@ const chart1 = {
                     "axis": {
                         "orient": "right",
                         "grid": false,
-                        "titleColor": "#DC1928"
+                        "titleColor": "#C9872C"
                     }
                 }
             }
         },
 
-        // Red points: Delivery points
+        // 3. Delivery points markers
         {
             "mark": {
                 "type": "point",
                 "filled": true,
-                "color": "#DC1928",
+                "color": "#F2BB72",
+                "stroke": "#C9872C",
+                "strokeWidth": 1.5,
                 "size": 85
             },
-
             "encoding": {
                 "x": {
                     "field": "Year",
                     "type": "ordinal",
                     "sort": "ascending"
                 },
-
                 "y": {
                     "field": "Delivery_Points_Million",
                     "type": "quantitative",
@@ -123,17 +123,19 @@ const chart1 = {
                     {
                         "field": "Delivery_Points_Million",
                         "type": "quantitative",
-                        "format": ".1f",
-                        "formatType": "number"
+                        "title": "Delivery points (million)",
+                        "format": ".2f"
                     }
                 ]
             }
         },
 
-        // Annotation: First and final letter volume lables
+        // 4. First letter volume labels
         {
             "transform": [
-                { "filter": "datum.Year == 2019 || datum.Year == 2024" },
+                {
+                    "filter": "datum.Year == 2019"
+                },
                 {
                     "calculate": "format(datum.Letter_Volume_Billion, '.1f') + 'b'",
                     "as": "LetterLabel"
@@ -154,7 +156,9 @@ const chart1 = {
                 "y": {
                     "field": "Letter_Volume_Billion",
                     "type": "quantitative",
-                    "scale": { "domain": [0, 2.3] },
+                    "scale": {
+                        "domain": [0, 2.3]
+                    },
                     "axis": null
                 },
                 "text": {
@@ -164,10 +168,12 @@ const chart1 = {
             }
         },
 
-        // Annotation: First and final delivery points labels
+        // 5. First delivery point labels
         {
             "transform": [
-                { "filter": "datum.Year == 2019 || datum.Year == 2024" },
+                {
+                    "filter": "datum.Year == 2019"
+                },
                 {
                     "calculate": "format(datum.Delivery_Points_Million, '.1f') + 'm'",
                     "as": "DeliveryLabel"
@@ -175,12 +181,10 @@ const chart1 = {
             ],
             "mark": {
                 "type": "text",
-                "color": "#DC1928",
+                "color": "#A96B1F",
                 "fontWeight": "bold",
                 "fontSize": 13,
-                "dx": -0,
-                "dy": -15,
-                "align": "center"
+                "dy": 15
             },
             "encoding": {
                 "x": {
@@ -201,13 +205,217 @@ const chart1 = {
                     "type": "nominal"
                 }
             }
+        },
+        
+        
+       
+        // 6. Gold circle around 2023 delivery point
+        {
+            "data": {
+                "values": [
+                    { "Year": 2023, "Delivery": 12.7 }
+                ]
+            },
+            "mark": {
+                "type": "point",
+                "shape": "circle",
+                "filled": false,
+                "stroke": "#C9872C",
+                "strokeWidth": 2,
+                "size": 450
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "ordinal"
+                },
+                "y": {
+                    "field": "Delivery",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [12.0, 12.8],
+                        "zero": false
+                    },
+                    "axis": null
+                }
+            }
+        },
+
+        // 7. Gold connector line
+        {
+            "data": {
+                "values": [
+                    {
+                        "Year": 2023,
+                        "Delivery": 12.7,
+                        "EndYear": 2022,
+                        "EndDelivery": 12.77
+                    }
+                ]
+            },
+            "mark": {
+                "type": "rule",
+                "stroke": "#C9872C",
+                "strokeWidth": 1.5
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "ordinal"
+                },
+                "x2": {
+                    "field": "EndYear"
+                },
+                "y": {
+                    "field": "Delivery",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [12.0, 12.8],
+                        "zero": false
+                    },
+                    "axis": null
+                },
+                "y2": {
+                    "field": "EndDelivery"
+                }
+            }
+        },
+
+        // 8. Gold annotation text
+        {
+            "data": {
+                "values": [
+                    {
+                        "Year": 2022,
+                        "Delivery": 12.78,
+                        "Label": [
+                            "Delivery points reached",
+                            "12.7m by 2023"
+                        ]
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "align": "right",
+                "baseline": "bottom",
+                "fontSize": 11,
+                "fontWeight": "bold",
+                "lineHeight": 15,
+                "color": "#C9872C",
+                "dx": -8
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "ordinal"
+                },
+                "y": {
+                    "field": "Delivery",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [12.0, 12.8],
+                        "zero": false
+                    },
+                    "axis": null
+                },
+                "text": {
+                    "field": "Label",
+                    "type": "nominal"
+                }
+            }
+        },
+
+        // 9. Blue connector pointing to TOP of 2024 bar
+        {
+            "data": {
+                "values": [
+                    {
+                        "Year": 2024,
+                        "Letter": 1.3,
+                        "EndYear": 2024,
+                        "EndLetter": 1.55
+                    }
+                ]
+            },
+            "mark": {
+                "type": "rule",
+                "stroke": "#527FA8",
+                "strokeWidth": 1.5
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "ordinal"
+                },
+                "x2": {
+                    "field": "EndYear"
+                },
+                "y": {
+                    "field": "Letter",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [0, 2.3]
+                    },
+                    "axis": null
+                },
+                "y2": {
+                    "field": "EndLetter"
+                }
+            }
+        },
+
+        // 10. Blue annotation text above 2024 bar
+        {
+            "data": {
+                "values": [
+                    {
+                        "Year": 2024,
+                        "Letter": 1.65,
+                        "Label": [
+                            "Letter volumes fell",
+                            "about 38% since 2019"
+                        ]
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "align": "right",
+                "baseline": "bottom",
+                "fontSize": 11,
+                "fontWeight": "bold",
+                "lineHeight": 15,
+                "color": "#527FA8",
+                "dx": 25
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "ordinal"
+                },
+                "y": {
+                    "field": "Letter",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [0, 2.3]
+                    },
+                    "axis": null
+                },
+                "text": {
+                    "field": "Label",
+                    "type": "nominal"
+                }
+            }
         }
     ],
+
     "resolve": {
         "scale": {
             "y": "independent"
         }
     },
+
     "config": {
         "view": {
             "stroke": null

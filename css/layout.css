@@ -1,4 +1,17 @@
 /* GLOBAL RESET */
+
+:root {
+    --page: #F3F9FF;
+    --surface: #FFFFFF;
+    --ink: #25364B;
+    --muted: #607083;
+    --navy: #172B46;
+    --gold: #e7b16b;
+    --red: #DC1928;
+    --border: #B6CADF;
+    --section-spacing: 36px;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -9,87 +22,166 @@ html {
 
 body {
     margin: 0;
-    background: #F7F6F3;
+    background: lightgray;
     color: #252525;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.page {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 100vh;
+  background-color: var(--page);
+  margin: 0 auto;
+  padding: 0;
+}
+
 /* HERO SECTION */
-.hero {
-    min-height: 220px;
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(20, 20, 20, 0.92) 0%,
-            rgba(20, 20, 20, 0.82) 40%,
-            rgba(20, 20, 20, 0.45) 70%,
-            rgba(20, 20, 20, 0.25) 100%
-        ),
-        url("../images/postal-hero.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #FFFFFF;
-}
 
-/* NAVIGATION */
-.nav {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 32px;
+.postal-hero {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 38px;
-}
-
-.nav-links a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    opacity: 0.85;
-    transition: opacity 0.2s ease;
-}
-
-.nav-links a:hover {
-    color: #DC1928;
-    opacity: 1;
-}
-
-.hero-content {
+    justify-content: center;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 32px 60px;
+    min-height: 290px;
+    overflow: hidden;
+    color: #FFFFFF;
+    background: #172B46;
 }
 
-.hero h1 {
+.postal-hero-inner {
+    position: relative;
+    isolation: isolate;
+    width: min(800px, 90%);
+    margin: 0 auto;
+    padding: 38px 0 42px;
+    text-align: center;
+}
+
+/* Hero title */
+.postal-hero-title {
     margin: 0;
-    max-width: 600px;
-    font-size: clamp(38px, 6vw, 48px);
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: -1px;
     color: #FFFFFF;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(36px, 4.5vw, 54px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -1px;
 }
 
-.hero h1 span {
-    color: #DC1928;
+.postal-hero-title {
+    color: #A9CBE8;
 }
 
-.hero-description {
-    max-width: 720px;
-    margin: 32px 0 0;
-    font-size: 19px;
-    line-height: 1.55;
-    color: #F2F2F2;
+.postal-hero-title span {
+    display: block;
+    color: var(--gold);
+}
+
+/* Small divider */
+.postal-hero-divider {
+    width: 50px;
+    height: 2px;
+    margin: 16px auto;
+    background: var(--gold);
+}
+
+/* Introduction */
+.postal-hero-intro {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.postal-hero-intro h2 {
+    margin: 0 0 10px;
+    color: #FFFFFF;
+    font-size: clamp(15px, 1.7vw, 18px);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.postal-hero-intro p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #D7E3EE;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Decorative envelope */
+.postal-envelope {
+    position: absolute;
+    z-index: -1;
+    right: -75px;
+    top: 50%;
+    width: 210px;
+    height: 135px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #D7E3EE;
+    transform: translateY(-50%) rotate(-14deg);
+    opacity: 0.07;
+    pointer-events: none;
+}
+
+.envelope-fold {
+    position: absolute;
+    inset: 0;
+    background: white;
+    clip-path: polygon(0 0, 100% 0, 50% 65%);
+}
+
+/* STORY OVERVIEW */
+.story-overview {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    padding: 24px 0 0;
+    margin-bottom: var(--section-spacing);
+}
+
+/* OVERVIEW CARDS */
+.overview-item {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 16px 13px;
+
+    border: 1px solid #B6CADF;
+    border-top: 3px solid #3D709F;
+    border-radius: 6px;
+
+    background: #FFFFFF;
+    color: #25364B;
+    text-decoration: none;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.overview-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px #172B4615;
+}
+
+/* CARD NUMBER */
+.overview-num {
+    color: #3D709F;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+/* CARD TITLE */
+.overview-item strong {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
 }
 
 /* MAIN PAGE */
@@ -97,17 +189,25 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 32px 120px;
+    padding: 0 32px 120px;
+    background-color: var(--page);
 }
 
+/* STORY SECTION */
 .story-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-spacing);
+
     width: 100%;
-    margin-bottom: 80px;
+    margin: 0 0 var(--section-spacing);
+    padding: 0;
+    border: none;
 }
 
 .section-header {
     width: 100%;
-    margin-bottom: 28px;
+    margin-bottom: 0;
     text-align: left;
 }
 
@@ -115,11 +215,11 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
 .section-number {
-    color: #DC1928;
+    color: #3D709F;
     font-size: 18px;
     font-weight: 800;
 }
@@ -127,11 +227,11 @@ body {
 .section-line {
     width: 30px;
     height: 3px;
-    background: #DC1928;
+    background: #3D709F;
 }
 
 .section-category {
-    color: #DC1928;
+    color: #3D709F;
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 1.5px;
@@ -139,7 +239,7 @@ body {
 
 .section-header h2 {
     margin: 0;
-    color: #252525;
+    color: #25364B;
     font-size: 34px;
     font-weight: 750;
     line-height: 1.2;
@@ -147,8 +247,8 @@ body {
 
 .section-intro {
     max-width: 800px;
-    margin: 16px 0 0;
-    color: #606060;
+    margin: var(--section-spacing) 0 0;
+    color: #607083;
     font-size: 17px;
     line-height: 1.65;
 }
@@ -158,14 +258,14 @@ body {
     width: 100%;
     min-width: 0;
     background: #FFFFFF;
-    border: 1px solid #E4E2DE;
+    border: 1px solid #D7E3EE;
     border-radius: 10px;
     padding: 32px 34px 34px;
     text-align: left;
 }
 
 .feature-chart + .feature-chart {
-    margin-top: 28px;
+    margin-top: 0;
 }
 
 .feature-chart .vega-embed {
@@ -284,7 +384,7 @@ body {
     display: inline-block;
     width: 24px;
     height: 0;
-    border-top: 3px solid #DC1928;
+    border-top: 3px solid #C9872C;
 }
 
 /* Chart 3 */
@@ -340,9 +440,8 @@ body {
 
 .insight-detail {
     max-width: 320px;
-    margin: 20px 0 0;
-    padding-top: 20px;
-    border-top: 1px solid #D9D9D9;
+    margin: 0 0 20px;
+    padding-top: 0px;
     color: #666666;
     font-size: 15px;
     line-height: 1.55;
@@ -354,11 +453,17 @@ body {
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
-    margin-bottom: 40px;
+    margin-bottom: 0;
 }
 
-.story-section > .feature-chart + .pure-g {
-    margin-top: 40px;
+.story-section > .feature-chart + .pure-g,
+.story-section > .pure-g + .feature-chart,
+.story-section > .pure-g + .pure-g {
+    margin-top: 0;
+
+/* REMOVE EXTRA GAP AFTER LAST SECTION */
+.story-section:last-child {
+    margin-bottom: 0;
 }
 
 .pure-u-2-3 {
@@ -447,35 +552,33 @@ body {
     accent-color: #DC1928;
 }
 
+/* RESPONSIVE */
 @media (max-width: 800px) {
-    #chart8 .vega-bindings {
-        gap: 12px;
+    .story-overview {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
-
-
-/* RESPONSIVE */
-@media (max-width: 800px) {
-    .nav-links {
-        display: none;
-    }
-
-    .hero {
-        padding: 56px 24px 60px;
-    }
-
-    .hero h1 {
-        font-size: 48px;
-        letter-spacing: -1.5px;
-    }
-
-    .hero-description {
-        font-size: 17px;
-    }
-
+@media (max-width: 600px) {
     .page-content {
-        padding: 60px 20px 100px;
+        padding: 0 20px 100px;
+    }
+
+    .postal-hero-inner {
+        padding: 36px 0;
+    }
+
+    .postal-hero-title {
+        font-size: 36px;
+    }
+
+    .postal-hero-intro p {
+        font-size: 12px;
+    }
+
+    .story-overview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
     }
 
     .pure-u-2-3,
@@ -488,7 +591,7 @@ body {
     }
 
     .pure-g {
-        margin-bottom: 24px;
+        margin-bottom: 0;
     }
 
     .pure-g > .pure-u-2-3,
@@ -519,5 +622,9 @@ body {
 
     .chart3-header {
         flex-wrap: wrap;
+    }
+
+    #chart8 .vega-bindings {
+        gap: 12px;
     }
 }
