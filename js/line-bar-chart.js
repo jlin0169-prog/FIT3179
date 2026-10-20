@@ -207,8 +207,6 @@ const chart1 = {
             }
         },
         
-        
-       
         // 6. Gold circle around 2023 delivery point
         {
             "data": {
@@ -237,7 +235,22 @@ const chart1 = {
                         "zero": false
                     },
                     "axis": null
-                }
+                },
+
+                // Tooltip for the annotation circle
+                "tooltip": [
+                    {
+                        "field": "Year",
+                        "type": "ordinal",
+                        "title": "Year"
+                    },
+                    {
+                        "field": "Delivery",
+                        "type": "quantitative",
+                        "title": "Delivery points (million)",
+                        "format": ".1f"
+                    }
+                ]
             }
         },
 

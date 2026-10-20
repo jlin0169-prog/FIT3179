@@ -1,12 +1,15 @@
-
-// Chart 3: Australia Post's Two-Speed Business
 const chart3 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "autosize": {"type": "fit", "contains": "padding"},
+    "autosize": {
+        "type": "fit",
+        "contains": "padding"
+    },
     "background": null,
+
     "data": {
         "url": "data/two_speed_business.csv"
     },
+
     "facet": {
         "row": {
             "field": "Service",
@@ -16,14 +19,17 @@ const chart3 = {
             "header": {
                 "labelFontSize": 16,
                 "labelFontWeight": "bold",
+                "labelColor": "#26384E",
                 "labelOrient": "top",
                 "labelAnchor": "start"
             }
         }
     },
+
     "spec": {
-        "width": 620,
+        "width": 600,
         "height": 180,
+
         "encoding": {
             "y": {
                 "field": "Year",
@@ -35,27 +41,41 @@ const chart3 = {
                     "FY2024",
                     "FY2025"
                 ],
-                "title": null
+                "title": null,
+                "axis": {
+                    "labelColor": "#56677B",
+                    "labelFontSize": 12,
+                    "domain": true,
+                    "domainColor": "#9AA7B5",
+                    "ticks": true,
+                    "tickColor": "#CBD5E1"
+                }
             }
         },
+
         "layer": [
-            // Connecting line
+            // 1. Neutral connecting lines
             {
                 "mark": {
                     "type": "rule",
-                    "strokeWidth": 3
+                    "color": "#96989a",
+                    "strokeWidth": 2,
+                    "opacity": 0.8
                 },
+
                 "encoding": {
                     "x": {
                         "field": "Revenue",
                         "type": "quantitative",
                         "title": "Revenue / expenditure ($ million)",
                         "scale": {
-                            "domain": [0, 8300]
+                            "domain": [0, 8300],
+                            "nice": false
                         },
                         "axis": {
                             "values": [0, 2000, 4000, 6000, 8000],
-                            "format": ",.0f"
+                            "format": ",.0f",
+                            "grid": false
                         }
                     },
                     "x2": {
@@ -63,13 +83,17 @@ const chart3 = {
                     }
                 }
             },
-            // Revenue point
+
+            // 2. Revenue points
             {
                 "mark": {
                     "type": "point",
                     "filled": true,
-                    "size": 120
+                    "color": "#6558A8",
+                    "size": 140,
+                    "opacity": 1
                 },
+
                 "encoding": {
                     "x": {
                         "field": "Revenue",
@@ -78,12 +102,7 @@ const chart3 = {
                             "domain": [0, 8300]
                         }
                     },
-                    "color": {
-                        "datum": "Revenue",
-                        "type": "nominal",
-                        "title": "Measure",
-                        "legend": null
-                    },
+
                     "tooltip": [
                         {
                             "field": "Year",
@@ -102,18 +121,21 @@ const chart3 = {
                         {
                             "field": "Result",
                             "type": "quantitative",
-                            "title": "Result ($m)",
-                            "format": ",.1f"
+                            "title": "Service result ($m)",
+                            "format": "+,.1f"
                         }
                     ]
                 }
             },
-            // Expenditure point
+
+            // 3. Expenditure points
             {
                 "mark": {
                     "type": "point",
                     "filled": true,
-                    "size": 120
+                    "color": "#D17A52",
+                    "size": 140,
+                    "opacity": 1
                 },
 
                 "encoding": {
@@ -123,13 +145,6 @@ const chart3 = {
                         "scale": {
                             "domain": [0, 8300]
                         }
-                    },
-
-                    "color": {
-                        "datum": "Expenditure",
-                        "type": "nominal",
-                        "title": "Measure",
-                        "legend": null
                     },
 
                     "tooltip": [
@@ -150,26 +165,165 @@ const chart3 = {
                         {
                             "field": "Result",
                             "type": "quantitative",
-                            "title": "Result ($m)",
-                            "format": ",.1f"
+                            "title": "Service result ($m)",
+                            "format": "+,.1f"
+                        }
+                    ]
+                }
+            },
+
+
+            // 4. Connector lines for FY2025 annotations
+            {
+                "transform": [
+                    { "filter": "datum.Year === 'FY2025'" },
+                    {
+                        "calculate":
+                            "datum.Service === 'Letters' ? 2100 : 6900",
+                        "as": "LineStart"
+                    },
+                    {
+                        "calculate":
+                            "datum.Service === 'Letters' ? 2450 : 7250",
+                        "as": "LineEnd"
+                    }
+                ],
+                "mark": {
+                    "type": "rule",
+                    "stroke": "#8A97A6",
+                    "strokeWidth": 1.5,
+                    "opcity": 1,
+                    "tooltip": false
+                },
+                "encoding": {
+                    "x": {
+                        "field": "LineStart",
+                        "type": "quantitative"
+                    },
+                    "x2": {
+                        "field": "LineEnd"
+                    }
+                }
+            },
+
+            // 5. FY2025 Letters annotation
+            {
+                "transform": [
+                    {
+                        "filter":
+                            "datum.Year === 'FY2025' && datum.Service === 'Letters'"
+                    },
+                    {
+                        "calculate":
+                            "'FY25 loss: $' + format(abs(datum.Result), ',.1f') + 'm'",
+                        "as": "Annotation"
+                    },
+                    {
+                        "calculate": "2500",
+                        "as": "AnnotationX"
+                    }
+                ],
+                "mark": {
+                    "type": "text",
+                    "align": "left",
+                    "baseline": "middle",
+                    "fontSize": 12,
+                    "fontWeight": "bold",
+                    "color": "#26384E"
+                },
+                "encoding": {
+                    "x": {
+                        "field": "AnnotationX",
+                        "type": "quantitative"
+                    },
+                    "text": {
+                        "field": "Annotation"
+                    },
+                    "tooltip": [
+                        { "field": "Year", "title": "Year" },
+                        {
+                            "field": "Result",
+                            "type": "quantitative",
+                            "title": "Service result ($m)",
+                            "format": "+,.1f"
+                        }
+                    ]
+                }
+            },
+
+            // 6. FY2025 Non-Letters annotation
+            {
+                "transform": [
+                    {
+                        "filter":
+                            "datum.Year === 'FY2025' && datum.Service === 'Non-Letters'"
+                    },
+                    {
+                        "calculate":
+                            "'FY25 surplus: $' + format(datum.Result, ',.1f') + 'm'",
+                        "as": "Annotation"
+                    },
+                    {
+                        "calculate": "6800",
+                        "as": "AnnotationX"
+                    }
+                ],
+                "mark": {
+                    "type": "text",
+                    "align": "right",
+                    "baseline": "middle",
+                    "fontSize": 12,
+                    "fontWeight": "bold",
+                    "color": "#26384E"
+                },
+                "encoding": {
+                    "x": {
+                        "field": "AnnotationX",
+                        "type": "quantitative"
+                    },
+                    "text": {
+                        "field": "Annotation"
+                    },
+                    "tooltip": [
+                        { "field": "Year", "title": "Year" },
+                        {
+                            "field": "Result",
+                            "type": "quantitative",
+                            "title": "Service result ($m)",
+                            "format": "+,.1f"
                         }
                     ]
                 }
             }
+
         ]
     },
+
     "resolve": {
         "scale": {
             "x": "shared"
         }
     },
+
     "config": {
         "view": {
             "stroke": null
         },
-
         "axis": {
-            "grid": false
+            "grid": false,
+            "labelFontSize": 12,
+            "titleFontSize": 12,
+            "labelColor": "#56677B",
+            "titleColor": "#26384E",
+
+            // Restore axis lines
+            "domain": true,
+            "domainColor": "#9AA7B5",
+            "domainWidth": 1,
+
+            "ticks": true,
+            "tickColor": "#CBD5E1",
+            "tickSize": 5
         }
     }
 };
