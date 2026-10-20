@@ -1,14 +1,14 @@
-
-// Chart 4: Australia's Shift to Online Shopping
 const chart4 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container",
     "height": 400,
+    "background": null,
+
     "data": {
         "url": "data/online_retail_share.csv"
     },
+
     "encoding": {
-        // Month
         "x": {
             "field": "Month",
             "type": "ordinal",
@@ -17,32 +17,62 @@ const chart4 = {
                 "May", "Jun", "Jul", "Aug",
                 "Sep", "Oct", "Nov", "Dec"
             ],
-            "title": "Month"
+            "title": "Month",
+            "axis": {
+                "labelColor": "#56677B",
+                "titleColor": "#26384E",
+                "labelAngle": -45,
+                "domain": true,
+                "domainColor": "#9AA7B5",
+                "tickColor": "#CBD5E1"
+            }
         },
-        // Year
+
         "y": {
             "field": "Year",
             "type": "ordinal",
             "sort": "ascending",
-            "title": "Year"
+            "title": "Year",
+            "axis": {
+                "labelColor": "#56677B",
+                "titleColor": "#26384E",
+                "domain": true,
+                "domainColor": "#9AA7B5",
+                "ticks": false
+            }
         }
     },
 
     "layer": [
-        // Layer 1: Heatmap
+        // 1. Heatmap
         {
             "mark": {
                 "type": "rect"
             },
+
             "encoding": {
                 "color": {
                     "field": "Online_Share",
                     "type": "quantitative",
                     "title": "Online share (%)",
                     "scale": {
-                        "schema": "yellowgreenblue"
+                        "domain": [2, 16],
+                        "range": [
+                            "#F3EAF2",
+                            "#E5CEE0",
+                            "#CCA9C7",
+                            "#AD7FA9",
+                            "#895D88",
+                            "#603D65"
+                        ]
+                    },
+                    "legend": {
+                        "titleColor": "#26384E",
+                        "labelColor": "#56677B",
+                        "gradientLength": 180
                     }
                 },
+
                 "tooltip": [
                     {
                         "field": "Year",
@@ -61,28 +91,49 @@ const chart4 = {
                 ]
             }
         },
-        // Layer 2: Highligh the 2 cells
+
+        // 2. Highlight July 2013
         {
             "transform": [
                 {
-                    "filter": "(datum.Year == 2013 && datum.Month == 'Jul') || (datum.Year == 2025 && datum.Month == 'Jun')"
+                    "filter":
+                        "datum.Year == 2013 && datum.Month == 'Jul'"
                 }
             ],
             "mark": {
                 "type": "rect",
                 "fillOpacity": 0,
-                "stroke": "#DC1928",
-                "strokeWidth": 3
+                "stroke": "#603D65",
+                "strokeWidth": 2.5
             }
         },
-        // Layer 3: Labels inside the highlighted cells
+
+        // 3. Highlight June 2025
         {
             "transform": [
                 {
-                    "filter": "(datum.Year == 2013 && datum.Month == 'Jul') || (datum.Year == 2025 && datum.Month == 'Jun')"
+                    "filter":
+                        "datum.Year == 2025 && datum.Month == 'Jun'"
+                }
+            ],
+            "mark": {
+                "type": "rect",
+                "fillOpacity": 0,
+                "stroke": "#FFFFFF",
+                "strokeWidth": 2.5
+            }
+        },
+
+        // 4. July 2013 label
+        {
+            "transform": [
+                {
+                    "filter":
+                        "datum.Year == 2013 && datum.Month == 'Jul'"
                 },
                 {
-                    "calculate": "format(datum.Online_Share, '.1f') + '%'",
+                    "calculate":
+                        "format(datum.Online_Share, '.1f') + '%'",
                     "as": "Label"
                 }
             ],
@@ -91,13 +142,38 @@ const chart4 = {
                 "font": "Arial",
                 "fontSize": 12,
                 "fontWeight": "bold",
-                "color": "#DC1928",
-                "dy": -2
+                "color": "#603D65"
             },
             "encoding": {
                 "text": {
-                    "field": "Label",
-                    "type": "nominal"
+                    "field": "Label"
+                }
+            }
+        },
+
+        // 5. June 2025 label
+        {
+            "transform": [
+                {
+                    "filter":
+                        "datum.Year == 2025 && datum.Month == 'Jun'"
+                },
+                {
+                    "calculate":
+                        "format(datum.Online_Share, '.1f') + '%'",
+                    "as": "Label"
+                }
+            ],
+            "mark": {
+                "type": "text",
+                "font": "Arial",
+                "fontSize": 12,
+                "fontWeight": "bold",
+                "color": "#FFFFFF"
+            },
+            "encoding": {
+                "text": {
+                    "field": "Label"
                 }
             }
         }
@@ -109,7 +185,9 @@ const chart4 = {
         },
 
         "axis": {
-            "grid": false
+            "grid": false,
+            "labelFontSize": 12,
+            "titleFontSize": 12
         }
     }
 };

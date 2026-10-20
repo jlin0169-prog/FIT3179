@@ -1,6 +1,3 @@
-
-// Chart 5: Online Food and Non-Food Shopping Horizon Chart
-
 const chart5 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
@@ -72,20 +69,21 @@ const chart5 = {
     },
 
     "spec": {
-        "width": 500,
+        "width": 470,
         "height": 145,
 
         "layer": [
             // Positive bands
             ...[
-                ["pos1", "#c6dbef"],
-                ["pos2", "#6baed6"],
-                ["pos3", "#2171b5"],
-                ["pos4", "#08306b"]
+                ["pos1", "#E8EBD4"],
+                ["pos2", "#CCD5A0"],
+                ["pos3", "#9DAF66"],
+                ["pos4", "#657D39"]
             ].map(([field, color]) => ({
                 "mark": {
                     "type": "area",
                     "color": color,
+                    "opacity": 1,
                     "clip": true
                 },
                 "encoding": {
@@ -102,7 +100,7 @@ const chart5 = {
                         "field": field,
                         "type": "quantitative",
                         "scale": {
-                            "domain": [0, 10]
+                            "domain": [0, 10.5]
                         },
                         "axis": {
                             "title": null,
@@ -115,14 +113,15 @@ const chart5 = {
 
             // Negative bands
             ...[
-                ["neg1", "#fdd0a2"],
-                ["neg2", "#fd8d3c"],
-                ["neg3", "#e6550d"],
-                ["neg4", "#a63603"]
+                ["neg1", "#F9DCE7"],
+                ["neg2", "#F0A9C4"],
+                ["neg3", "#D96B98"],
+                ["neg4", "#A83B6D"]
             ].map(([field, color]) => ({
                 "mark": {
                     "type": "area",
                     "color": color,
+                    "opacity": 1,
                     "clip": true
                 },
                 "encoding": {
@@ -178,41 +177,56 @@ const chart5 = {
                 }
             },
 
-            // Vertical annotation lines
+
+            // Annotation lines - highlighted pandemic surges
             {
                 "transform": [
                     {
-                        "filter": "(datum.Category === 'Online Non-Food' && year(datum.Date) === 2020 && month(datum.Date) === 3) || (datum.Category === 'Online Food Retailing' && year(datum.Date) === 2020 && month(datum.Date) === 4)"
+                        "filter":
+                            "(datum.Category === 'Online Non-Food' && year(toDate(datum.Date)) === 2020 && month(toDate(datum.Date)) === 3) || (datum.Category === 'Online Food Retailing' && year(toDate(datum.Date)) === 2020 && month(toDate(datum.Date)) === 4)"
                     }
                 ],
                 "mark": {
                     "type": "rule",
-                    "color": "#555555",
-                    "strokeDash": [3, 3],
-                    "strokeWidth": 1.5
+                    "color": "#657D39",
+                    "strokeWidth": 2,
+                    "opacity": 0.9
                 },
                 "encoding": {
                     "x": {
                         "field": "Date",
                         "type": "temporal"
                     },
-                    "y": {
-                        "datum": 0
-                    },
-                    "y2": {
-                        "datum": 10
-                    }
+                    "y": { "datum": 0 },
+                    "y2": { "datum": 10 },
+                    "tooltip": [
+                        { "field": "Category", "title": "Category" },
+                        {
+                            "field": "Date",
+                            "type": "temporal",
+                            "title": "Month",
+                            "format": "%B %Y"
+                        },
+                        {
+                            "field": "Monthly_Change",
+                            "type": "quantitative",
+                            "title": "Monthly change (%)",
+                            "format": "+.1f"
+                        }
+                    ]
                 }
             },
 
-            // Annotation labels
+            // Annotation labels - derived from CSV
             {
                 "transform": [
                     {
-                        "filter": "(datum.Category === 'Online Non-Food' && year(datum.Date) === 2020 && month(datum.Date) === 3) || (datum.Category === 'Online Food Retailing' && year(datum.Date) === 2020 && month(datum.Date) === 4)"
+                        "filter":
+                            "(datum.Category === 'Online Non-Food' && year(toDate(datum.Date)) === 2020 && month(toDate(datum.Date)) === 3) || (datum.Category === 'Online Food Retailing' && year(toDate(datum.Date)) === 2020 && month(toDate(datum.Date)) === 4)"
                     },
                     {
-                        "calculate": "datum.Category === 'Online Non-Food' ? 'Apr 2020: +38.2%' : 'May 2020: +27.1%'",
+                        "calculate":
+                            "timeFormat(toDate(datum.Date), '%b %Y') + ': ' + format(datum.Monthly_Change, '+.1f') + '%'",
                         "as": "AnnotationLabel"
                     }
                 ],
@@ -222,24 +236,22 @@ const chart5 = {
                     "baseline": "top",
                     "dx": 7,
                     "dy": 5,
-                    "fontSize": 10,
+                    "fontSize": 11,
                     "fontWeight": "bold",
-                    "color": "#252525"
+                    "color": "#657D39"
                 },
                 "encoding": {
                     "x": {
                         "field": "Date",
                         "type": "temporal"
                     },
-                    "y": {
-                        "datum": 10
-                    },
+                    "y": { "datum": 10 },
                     "text": {
-                        "field": "AnnotationLabel",
-                        "type": "nominal"
+                        "field": "AnnotationLabel"
                     }
                 }
             }
+
         ]
     },
 
