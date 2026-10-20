@@ -405,16 +405,6 @@ body {
     background: #657D39;
 }
 
-/* Chart 8 */
-.legend-dot.facility-office {
-    background: #C62828;
-}
-
-.legend-dot.facility-box {
-    background: #267DA8;
-}
-
-
 /* SHARED INSIGHT TYPOGRAPHY (SIDE OR BOTTOM) */
 .description h2,
 .description h1 {

@@ -1,0 +1,11 @@
+﻿Region,Service,Percent
+Major cities,Postage,38
+Major cities,Financial services,32
+Major cities,Identity services,2
+Major cities,Other services,12
+Major cities,Consumer products,15
+Very remote,Postage,22
+Very remote,Financial services,45
+Very remote,Identity services,2
+Very remote,Other services,11
+Very remote,Consumer products,20

@@ -1,9 +1,11 @@
 const chart8 = {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
   "width": "container",
   "height": 420,
   "background": null,
 
+  // 1. Interactive controls
   "params": [
     {
       "name": "FacilityFilter",
@@ -61,14 +63,16 @@ const chart8 = {
     }
   ],
 
+  // 2. Map projection
   "projection": {
     "type": "mercator",
-    "center": {"expr": "center_to"},
-    "scale": {"expr": "zoom_level"},
+    "center": { "expr": "center_to" },
+    "scale": { "expr": "zoom_level" },
     "translate": [300, 180]
   },
 
   "layer": [
+    // 3. Australian state boundaries
     {
       "data": {
         "url": "js/states.geojson",
@@ -77,17 +81,22 @@ const chart8 = {
           "property": "features"
         }
       },
+
       "mark": {
         "type": "geoshape",
-        "fill": "#F4F5F7",
-        "stroke": "#9BA3AE",
-        "strokeWidth": 0.8
+        "fill": "#EDF1F3",
+        "stroke": "#C9D3DC",
+        "strokeWidth": 0.9,
+        "clip": true
       }
     },
+
+    // 4. Postal facility points
     {
       "data": {
         "url": "data/australia_postal_facilities.csv"
       },
+
       "transform": [
         {
           "filter": "FacilityFilter == 'All facilities' || datum.Facility_Type == FacilityFilter"
@@ -108,10 +117,10 @@ const chart8 = {
 
       "mark": {
         "type": "circle",
-        "size": 24,
-        "opacity": 0.58,
-        "stroke": "white",
-        "strokeWidth": 0.15,
+        "size": 20,
+        "opacity": 0.65,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 0.2,
         "clip": true
       },
 
@@ -124,15 +133,34 @@ const chart8 = {
           "field": "Latitude",
           "type": "quantitative"
         },
+
+
         "color": {
           "field": "Facility_Type",
           "type": "nominal",
           "scale": {
-            "domain": ["Post office", "Post box"],
-            "range": ["#C62828", "#267DA8"]
+            "domain": [
+              "Post office",
+              "Post box"
+            ],
+            "range": [
+              "#C83F4F",  // Post office
+              "#159E9C"   // Post box
+            ]
           },
-          "legend": null
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal",
+            "symbolType": "circle",
+            "symbolSize": 110,
+            "labelFontSize": 12,
+            "labelColor": "#26384E",
+            "offset": 12
+          }
         },
+
+
         "tooltip": [
           {
             "field": "DisplayName",
@@ -142,7 +170,7 @@ const chart8 = {
           {
             "field": "Facility_Type",
             "type": "nominal",
-            "title": "Type"
+            "title": "Facility type"
           },
           {
             "field": "DisplayOperator",
@@ -160,6 +188,13 @@ const chart8 = {
   ],
 
   "config": {
-    "view": {"stroke": null}
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "legend": {
+      "labelFontSize": 12,
+      "labelColor": "#26384E"
+    }
   }
 };

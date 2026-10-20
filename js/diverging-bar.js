@@ -1,4 +1,3 @@
-
 const chart10 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
@@ -61,18 +60,22 @@ const chart10 = {
                 "values": [-20, -10, 0, 10, 20],
                 "labelExpr": "datum.value + '%'",
                 "grid": true,
-                "gridColor": "#EEEEEE",
-                "titlePadding": 15
+                "gridColor": "#E4E8EB",
+                "gridWidth": 1,
+                "titlePadding": 15,
+                "labelColor": "#56677B",
+                "titleColor": "#26384E"
             }
         }
     },
 
     "layer": [
+        // 1. Zero reference line
         {
             "mark": {
                 "type": "rule",
-                "color": "#777777",
-                "strokeWidth": 1.2
+                "color": "#66717C",
+                "strokeWidth": 1.5
             },
             "encoding": {
                 "x": {
@@ -81,6 +84,7 @@ const chart10 = {
             }
         },
 
+        // 2. Diverging bars
         {
             "mark": {
                 "type": "bar",
@@ -94,12 +98,15 @@ const chart10 = {
                     "type": "nominal",
                     "scale": {
                         "domain": ["Increase", "Decrease"],
-                        "range": ["#368BC5", "#F28C45"]
+                        "range": ["#e016dc", "#E58A43"]
                     },
                     "legend": {
                         "orient": "bottom",
                         "title": null,
-                        "direction": "horizontal"
+                        "direction": "horizontal",
+                        "labelFontSize": 12,
+                        "labelColor": "#56677B",
+                        "symbolType": "square"
                     }
                 },
 
@@ -125,7 +132,14 @@ const chart10 = {
             }
         },
 
+        // 3. Positive percentage labels
         {
+            "transform": [
+                {
+                    "filter": "datum.Change >= 0"
+                }
+            ],
+
             "mark": {
                 "type": "text",
                 "align": "left",
@@ -135,12 +149,6 @@ const chart10 = {
                 "color": "#333333"
             },
 
-            "transform": [
-                {
-                    "filter": "datum.Change >= 0"
-                }
-            ],
-
             "encoding": {
                 "text": {
                     "field": "ChangeLabel",
@@ -149,7 +157,14 @@ const chart10 = {
             }
         },
 
+        // 4. Negative percentage labels
         {
+            "transform": [
+                {
+                    "filter": "datum.Change < 0"
+                }
+            ],
+
             "mark": {
                 "type": "text",
                 "align": "right",
@@ -158,12 +173,6 @@ const chart10 = {
                 "fontWeight": "bold",
                 "color": "#333333"
             },
-
-            "transform": [
-                {
-                    "filter": "datum.Change < 0"
-                }
-            ],
 
             "encoding": {
                 "text": {
