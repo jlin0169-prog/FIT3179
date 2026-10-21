@@ -1,4 +1,4 @@
-const chart12 = {
+const chart10 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
     "background": null,

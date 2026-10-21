@@ -1,246 +1,242 @@
-const chart7 = {
-  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+const chart6 = {
+    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
 
-  background: "transparent",
+    background: "transparent",
 
-  autosize: {
-    type: "pad",
-    contains: "padding"
-  },
+    autosize: {
+        type: "pad",
+        contains: "padding"
+    },
 
-  hconcat: [
-    // LEFT: NORMALISED CHOROPLETH
-    {
-      width: 300,
-      height: 320,
-
-      title: {
-        text: "Online Spending Per Resident",
-        subtitle: "Darker areas indicate higher spending per person",
-        fontSize: 15,
-        subtitleFontSize: 11,
-        color: "#26384E",
-        subtitleColor: "#65778C",
-        anchor: "start"
-      },
-
-      projection: {
-        type: "mercator"
-      },
-
-      data: {
-        url: "js/states.geojson",
-        format: {
-          type: "json",
-          property: "features"
-        }
-      },
-
-      transform: [
+    hconcat: [
+        // LEFT: NORMALISED CHOROPLETH
         {
-          calculate: "datum.properties.STATE_NAME",
-          as: "State"
-        },
-        {
-          lookup: "State",
-          from: {
+            width: 300,
+            height: 320,
+
+            title: {
+                text: "Online Spending Per Resident",
+                subtitle: "Darker areas indicate higher spending per person",
+                fontSize: 15,
+                subtitleFontSize: 11,
+                color: "#26384E",
+                subtitleColor: "#65778C",
+                anchor: "start"
+            },
+
+            projection: {
+                type: "mercator"
+            },
+
             data: {
-              url: "data/online_spending_by_state.csv"
-            },
-            key: "State",
-            fields: [
-              "Spending_Billion",
-              "Growth",
-              "Population_2025"
-            ]
-          }
-        },
-        {
-          calculate:
-            "datum.Spending_Billion * 1000000000 / datum.Population_2025",
-          as: "Spending_Per_Capita"
-        }
-      ],
-
-      layer: [
-        {
-          params: [
-            {
-              name: "selectedState",
-              select: {
-                type: "point",
-                fields: ["State"],
-                on: "click",
-                clear: "dblclick"
-              }
-            }
-          ],
-
-          mark: {
-            type: "geoshape",
-            stroke: "#FFFFFF",
-            strokeWidth: 1,
-            cursor: "pointer"
-          },
-
-          encoding: {
-            color: {
-              field: "Spending_Per_Capita",
-              type: "quantitative",
-              title: "Spending per resident ($)",
-              scale: {
-                 "range": [
-                    "#F3E9DD",
-                    "#E2CDB5",
-                    "#C9A27D",
-                    "#A77955",
-                    "#754B35"
-                ],
-                zero: false
-              },
-              legend: {
-                orient: "bottom",
-                direction: "horizontal",
-                format: ",.0f"
-              }
+                url: "js/states.geojson",
+                format: {
+                    type: "json",
+                    property: "features"
+                }
             },
 
-            opacity: {
-              condition: {
-                param: "selectedState",
-                value: 1
-              },
-              value: 0.35
+            transform: [
+                {
+                    calculate: "datum.properties.STATE_NAME",
+                    as: "State"
+                },
+                {
+                    lookup: "State",
+                    from: {
+                        data: {
+                            url: "data/online_spending_by_state.csv"
+                        },
+                        key: "State",
+                        fields: [
+                            "Spending_Billion",
+                            "Growth",
+                            "Population_2025"
+                        ]
+                    }
+                },
+                {
+                    calculate:
+                        "datum.Spending_Billion * 1000000000 / datum.Population_2025",
+                    as: "Spending_Per_Capita"
+                }
+            ],
+            params: [
+                {
+                    name: "selectedState",
+                    select: {
+                        type: "point",
+                        fields: ["State"],
+                        on: "click",
+                        clear: "dblclick"
+                    }
+                }
+            ],
+
+            mark: {
+                type: "geoshape",
+                stroke: "#FFFFFF",
+                strokeWidth: 1,
+                cursor: "pointer"
             },
 
-            tooltip: [
-              {
-                field: "State",
-                type: "nominal",
-                title: "State"
-              },
-              {
-                field: "Spending_Per_Capita",
-                type: "quantitative",
-                title: "Spending per resident ($)",
-                format: ",.0f"
-              },
-              {
-                field: "Spending_Billion",
-                type: "quantitative",
-                title: "Total spending ($b)",
-                format: ".1f"
-              },
-              {
-                field: "Growth",
-                type: "quantitative",
-                title: "YoY growth (%)",
-                format: ".1f"
-              }
-            ]
-          }
-        }
-      ]
-    },
+            encoding: {
+                color: {
+                    field: "Spending_Per_Capita",
+                    type: "quantitative",
+                    title: "Spending per resident ($)",
+                    scale: {
+                        "range": [
+                            "#F3E9DD",
+                            "#E2CDB5",
+                            "#C9A27D",
+                            "#A77955",
+                            "#754B35"
+                        ],
+                        zero: false
+                    },
+                    legend: {
+                        orient: "bottom",
+                        direction: "horizontal",
+                        format: ",.0f"
+                    }
+                },
 
-    // RIGHT: LINKED BAR CHART
-    {
-      width: 170,
-      height: 300,
+                opacity: {
+                    condition: {
+                        param: "selectedState",
+                        value: 1
+                    },
+                    value: 0.35
+                },
 
-      title: {
-        text: "Total Online Spending by State",
-        subtitle: "Click a state on the map to highlight",
-        fontSize: 15,
-        subtitleFontSize: 11,
-        color: "#26384E",
-        subtitleColor: "#65778C",
-        anchor: "start"
-      },
+                tooltip: [
+                    {
+                        field: "State",
+                        type: "nominal",
+                        title: "State"
+                    },
+                    {
+                        field: "Spending_Per_Capita",
+                        type: "quantitative",
+                        title: "Spending per resident ($)",
+                        format: ",.0f"
+                    },
+                    {
+                        field: "Spending_Billion",
+                        type: "quantitative",
+                        title: "Total spending ($b)",
+                        format: ".1f"
+                    },
+                    {
+                        field: "Growth",
+                        type: "quantitative",
+                        title: "YoY growth (%)",
+                        format: ".1f"
+                    }
+                ]
 
-      data: {
-        url: "data/online_spending_by_state.csv"
-      },
-
-      mark: {
-        type: "bar",
-        color: "#9B6A4A",
-        cornerRadiusEnd: 3
-      },
-
-      encoding: {
-        y: {
-          field: "State",
-          type: "nominal",
-          sort: {
-            field: "Spending_Billion",
-            order: "descending"
-          },
-          title: null,
-        },
-
-        x: {
-          field: "Spending_Billion",
-          type: "quantitative",
-          title: "Online spending ($ billion)",
-          scale: {
-            domain: [0, 30]
-          },
-          axis: {
-                values: [0, 10, 20, 30],
-                grid: true,
-                gridColor: "#E4EAF0",
-                gridWidth: 1,
-                domain: false,
-                ticks: false,
-                labelColor: "#56677B",
-                titleColor: "#26384E"
             }
         },
 
-        opacity: {
-            condition: {
-                param: "selectedState",
-                value: 1,
-                empty: true
+        // RIGHT: LINKED BAR CHART
+        {
+            width: 170,
+            height: 300,
+
+            title: {
+                text: "Total Online Spending by State",
+                subtitle: "Click a state on the map to highlight",
+                fontSize: 15,
+                subtitleFontSize: 11,
+                color: "#26384E",
+                subtitleColor: "#65778C",
+                anchor: "start"
             },
-            value: 0.25
+
+            data: {
+                url: "data/online_spending_by_state.csv"
+            },
+
+            mark: {
+                type: "bar",
+                color: "#9B6A4A",
+                cornerRadiusEnd: 3
+            },
+
+            encoding: {
+                y: {
+                    field: "State",
+                    type: "nominal",
+                    sort: {
+                        field: "Spending_Billion",
+                        order: "descending"
+                    },
+                    title: null,
+                },
+
+                x: {
+                    field: "Spending_Billion",
+                    type: "quantitative",
+                    title: "Online spending ($ billion)",
+                    scale: {
+                        domain: [0, 30]
+                    },
+                    axis: {
+                        values: [0, 10, 20, 30],
+                        grid: true,
+                        gridColor: "#E4EAF0",
+                        gridWidth: 1,
+                        domain: false,
+                        ticks: false,
+                        labelColor: "#56677B",
+                        titleColor: "#26384E"
+                    }
+                },
+
+                opacity: {
+                    condition: {
+                        param: "selectedState",
+                        value: 1,
+                        empty: true
+                    },
+                    value: 0.25
+                },
+
+                tooltip: [
+                    {
+                        field: "State",
+                        type: "nominal",
+                        title: "State"
+                    },
+                    {
+                        field: "Spending_Billion",
+                        type: "quantitative",
+                        title: "Total spending ($b)",
+                        format: ".1f"
+                    },
+                    {
+                        field: "Growth",
+                        type: "quantitative",
+                        title: "YoY growth (%)",
+                        format: ".1f"
+                    }
+                ]
+            }
+        }
+    ],
+
+    spacing: 8,
+
+    config: {
+        view: {
+            stroke: null
         },
-
-        tooltip: [
-          {
-            field: "State",
-            type: "nominal",
-            title: "State"
-          },
-          {
-            field: "Spending_Billion",
-            type: "quantitative",
-            title: "Total spending ($b)",
-            format: ".1f"
-          },
-          {
-            field: "Growth",
-            type: "quantitative",
-            title: "YoY growth (%)",
-            format: ".1f"
-          }
-        ]
-      }
+        font: "Arial",
+        axis: {
+            gridColor: "#EAEAEA",
+            labelColor: "#444444",
+            titleColor: "#333333"
+        }
     }
-  ],
-
-  spacing: 8,
-
-  config: {
-    view: {
-      stroke: null
-    },
-    font: "Arial",
-    axis: {
-      gridColor: "#EAEAEA",
-      labelColor: "#444444",
-      titleColor: "#333333"
-    }
-  }
 };

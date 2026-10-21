@@ -1,4 +1,4 @@
-const chart9 = {
+const chart7 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
     "width": 500,
