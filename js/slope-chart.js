@@ -102,17 +102,7 @@ const chart10 = {
                     "#84e8cf"
                 ]
             },
-            "legend": {
-                "title": "Transaction type",
-                "orient": "bottom",
-                "direction": "horizontal",
-                "columns": 3,
-                "labelFontSize": 12,
-                "symbolStrokeWidth": 3,
-                "symbolSize": 130,
-                "titleColor": "#26384E",
-                "labelColor": "#56677B"
-            }
+            "legend": null
         },
 
         "opacity": {
@@ -144,7 +134,7 @@ const chart10 = {
     },
 
     "layer": [
-        // 1. Slope lines
+        // Slope lines
         {
             "mark": {
                 "type": "line",
@@ -162,7 +152,7 @@ const chart10 = {
             }
         },
 
-        // 2. Points
+        // Points
         {
             "mark": {
                 "type": "point",
@@ -173,7 +163,7 @@ const chart10 = {
             }
         },
 
-        // 3A. Percentage labels at left
+        // Percentage labels at left
         {
             "transform": [
                 {
@@ -185,10 +175,12 @@ const chart10 = {
                 }
             ],
             "mark": {
+                "font": "Figtree",
                 "type": "text",
                 "align": "right",
                 "baseline": "bottom",
-                "dx": -13,
+                "dx": -12,
+                "dy": 7,
                 "fontSize": 12,
                 "fontWeight": "bold",
                 "lineHeight": 17
@@ -201,7 +193,7 @@ const chart10 = {
             }
         },
 
-        // 3B. Percentage labels at right
+        // Percentage labels at right
         {
             "transform": [
                 {
@@ -213,6 +205,7 @@ const chart10 = {
                 }
             ],
             "mark": {
+                "font": "Figtree",
                 "type": "text",
                 "align": "left",
                 "baseline": "middle",
@@ -228,7 +221,70 @@ const chart10 = {
             }
         },
 
-        // 4. Diagonal annotation connector (/)
+        // Financial services annotation connector
+        {
+            "data": {
+                "values": [{
+                    "xStart": 0.72,
+                    "xEnd": 0.60,
+                    "yStart": 41.5,
+                    "yEnd": 45
+                }]
+            },
+            "transform": [{
+                "filter": "selectedService === 'All services' || selectedService === 'Financial services'"
+            }],
+            "mark": {
+                "type": "rule",
+                "strokeWidth": 1.5,
+                "color": "#00A1F1"
+            },
+            "encoding": {
+                "x": { "field": "xStart", "type": "quantitative" },
+                "x2": { "field": "xEnd" },
+                "y": { "field": "yStart", "type": "quantitative" },
+                "y2": { "field": "yEnd" },
+                "color": { "value": "#00A1F1", "legend": null },
+                "opacity": { "value": 1 },
+                "tooltip": { "value": null }
+            }
+        },
+
+        // Financial services annotation text
+        {
+            "data": {
+                "values": [{
+                    "xText": 0.30,
+                    "yText": 49,
+                    "Annotation": [
+                        "Financial services:",
+                        "13 percentage points higher"
+                    ]
+                }]
+            },
+            "transform": [{
+                "filter": "selectedService === 'All services' || selectedService === 'Financial services'"
+            }],
+            "mark": {
+                "font": "Figtree",
+                "type": "text",
+                "align": "left",
+                "baseline": "middle",
+                "fontSize": 12,
+                "fontWeight": "bold",
+                "lineHeight": 17
+            },
+            "encoding": {
+                "x": { "field": "xText", "type": "quantitative" },
+                "y": { "field": "yText", "type": "quantitative" },
+                "text": { "field": "Annotation", "type": "nominal" },
+                "color": { "value": "#00A1F1", "legend": null },
+                "opacity": { "value": 1 },
+                "tooltip": { "value": null }
+            }
+        },
+
+        // Annotation line
         {
             "data": {
                 "values": [
@@ -281,7 +337,7 @@ const chart10 = {
             }
         },
 
-        // 5. Annotation text
+        // Annotation text
         {
             "data": {
                 "values": [
@@ -289,8 +345,8 @@ const chart10 = {
                         "xText": 0.8,
                         "yText": 33,
                         "Annotation": [
-                            "Postage: 16%",
-                            "lower share in remote areas"
+                            "Postage:",
+                            "16 percentage points lower"
                         ]
                     }
                 ]
@@ -303,6 +359,7 @@ const chart10 = {
             ],
 
             "mark": {
+                "font": "Figtree",
                 "type": "text",
                 "align": "left",
                 "baseline": "bottom",

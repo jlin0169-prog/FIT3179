@@ -9,7 +9,7 @@ const chart1 = {
     },
 
     "layer": [
-        // 1. Addressed letter volume (blue bars)
+        // Addressed letter volume (blue bars)
         {
             "mark": {
                 "type": "bar",
@@ -58,7 +58,7 @@ const chart1 = {
             }
         },
 
-        // 2. Delivery points (gold line)
+        // Delivery points (gold line)
         {
             "mark": {
                 "type": "line",
@@ -89,7 +89,7 @@ const chart1 = {
             }
         },
 
-        // 3. Delivery points markers
+        // Delivery points markers
         {
             "mark": {
                 "type": "point",
@@ -130,7 +130,7 @@ const chart1 = {
             }
         },
 
-        // 4. First letter volume labels
+        // First letter volume labels
         {
             "transform": [
                 {
@@ -168,7 +168,7 @@ const chart1 = {
             }
         },
 
-        // 5. First delivery point labels
+        // First delivery point labels
         {
             "transform": [
                 {
@@ -207,7 +207,7 @@ const chart1 = {
             }
         },
         
-        // 6. Gold circle around 2023 delivery point
+        // Gold circle around 2023 delivery point
         {
             "data": {
                 "values": [
@@ -254,7 +254,7 @@ const chart1 = {
             }
         },
 
-        // 7. Gold connector line
+        // Gold connector line
         {
             "data": {
                 "values": [
@@ -294,7 +294,7 @@ const chart1 = {
             }
         },
 
-        // 8. Gold annotation text
+        // Gold annotation text
         {
             "data": {
                 "values": [
@@ -309,6 +309,7 @@ const chart1 = {
                 ]
             },
             "mark": {
+                "font": "Figtree",
                 "type": "text",
                 "align": "right",
                 "baseline": "bottom",
@@ -339,7 +340,7 @@ const chart1 = {
             }
         },
 
-        // 9. Blue connector pointing to TOP of 2024 bar
+        // Blue connector pointing to TOP of 2024 bar
         {
             "data": {
                 "values": [
@@ -378,7 +379,7 @@ const chart1 = {
             }
         },
 
-        // 10. Blue annotation text above 2024 bar
+        // Blue annotation text above 2024 bar
         {
             "data": {
                 "values": [
@@ -393,6 +394,7 @@ const chart1 = {
                 ]
             },
             "mark": {
+                "font": "Figtree",
                 "type": "text",
                 "align": "right",
                 "baseline": "bottom",

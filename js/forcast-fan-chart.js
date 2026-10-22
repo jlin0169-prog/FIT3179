@@ -19,10 +19,10 @@ const chart11 = {
   },
   "transform": [
     {
-        "calculate": "datum.Financial_Year === 'FY2025-26' ? 0 : datum.Financial_Year === 'FY2026-27' ? 1 : datum.Financial_Year === 'FY2027-28' ? 2 : datum.Financial_Year === 'FY2028-29' ? 3 : null",
-        "as": "xPos"
+      "calculate": "datum.Financial_Year === 'FY2025-26' ? 0 : datum.Financial_Year === 'FY2026-27' ? 1 : datum.Financial_Year === 'FY2027-28' ? 2 : datum.Financial_Year === 'FY2028-29' ? 3 : null",
+      "as": "xPos"
     }
-],
+  ],
 
   "encoding": {
     "x": {
@@ -49,7 +49,7 @@ const chart11 = {
 
 
   "layer": [
-    // 1. Forecast scenario envelope
+    // Forecast scenario envelope
     {
       "mark": {
         "type": "area",
@@ -78,7 +78,7 @@ const chart11 = {
       }
     },
 
-    // 2. Optimistic scenario boundary
+    // Optimistic scenario boundary
     {
       "mark": {
         "type": "line",
@@ -94,7 +94,7 @@ const chart11 = {
       }
     },
 
-    // 3. Pessimistic scenario boundary
+    // Pessimistic scenario boundary
     {
       "mark": {
         "type": "line",
@@ -110,11 +110,11 @@ const chart11 = {
       }
     },
 
-    // 4. Mean forecast line
+    // Mean forecast line
     {
       "mark": {
         "type": "line",
-        "color": "#365B7D",
+        "color": "#527FA8",
         "strokeWidth": 3.5,
         "point": {
           "filled": true,
@@ -131,7 +131,7 @@ const chart11 = {
       }
     },
 
-    // 5. Interactive tooltip points
+    // Interactive tooltip points
     {
       "mark": {
         "type": "point",
@@ -172,7 +172,7 @@ const chart11 = {
       }
     },
 
-    // 6. Mean label
+    // Mean label
     {
       "transform": [
         {
@@ -180,14 +180,15 @@ const chart11 = {
         }
       ],
       "mark": {
+        "font": "Figtree",
         "type": "text",
         "align": "right",
         "baseline": "bottom",
-        "dx": -12,
-        "dy": -20,
+        "dx": -5,
+        "dy": -22,
         "fontSize": 12,
         "fontWeight": "bold",
-        "color": "#365B7D"
+        "color": "#527FA8"
       },
       "encoding": {
         "y": {
@@ -200,7 +201,7 @@ const chart11 = {
       }
     },
 
-    // 7. Optimistic label
+    // Optimistic label
     {
       "transform": [
         {
@@ -208,10 +209,11 @@ const chart11 = {
         }
       ],
       "mark": {
+        "font": "Figtree",
         "type": "text",
         "align": "right",
         "baseline": "bottom",
-        "dx": -7,
+        "dx": 0,
         "dy": -50,
         "fontSize": 12,
         "fontWeight": "bold",
@@ -228,7 +230,7 @@ const chart11 = {
       }
     },
 
-    // 8. Pessimistic label
+    // Pessimistic label
     {
       "transform": [
         {
@@ -236,6 +238,7 @@ const chart11 = {
         }
       ],
       "mark": {
+        "font": "Figtree",
         "type": "text",
         "align": "right",
         "baseline": "top",
@@ -256,7 +259,7 @@ const chart11 = {
       }
     },
 
-    // 9. Highlight the final mean forecast point
+    // Highlight the final mean forecast point
     {
       "transform": [
         {
@@ -264,10 +267,11 @@ const chart11 = {
         }
       ],
       "mark": {
+        "font": "Figtree",
         "type": "point",
         "filled": true,
         "size": 180,
-        "color": "#365B7D",
+        "color": "#527FA8",
         "stroke": "#FFFFFF",
         "strokeWidth": 2
       },
@@ -278,33 +282,33 @@ const chart11 = {
         }
       },
       "tooltip": [
-            {
-                "field": "Financial_Year",
-                "type": "nominal",
-                "title": "Financial year"
-            },
-            {
-                "field": "Mean_Million",
-                "type": "quantitative",
-                "title": "Mean forecast (million)",
-                "format": ",.1f"
-            },
-            {
-                "field": "Optimistic_Million",
-                "type": "quantitative",
-                "title": "Optimistic (million)",
-                "format": ",.1f"
-            },
-            {
-                "field": "Pessimistic_Million",
-                "type": "quantitative",
-                "title": "Pessimistic (million)",
-                "format": ",.1f"
-            }
-        ]
+        {
+          "field": "Financial_Year",
+          "type": "nominal",
+          "title": "Financial year"
+        },
+        {
+          "field": "Mean_Million",
+          "type": "quantitative",
+          "title": "Mean forecast (million)",
+          "format": ",.1f"
+        },
+        {
+          "field": "Optimistic_Million",
+          "type": "quantitative",
+          "title": "Optimistic (million)",
+          "format": ",.1f"
+        },
+        {
+          "field": "Pessimistic_Million",
+          "type": "quantitative",
+          "title": "Pessimistic (million)",
+          "format": ",.1f"
+        }
+      ]
     },
 
-    // 10. Diagonal connector pointing upwards to the right
+    // Diagonal connector pointing upwards to the right
     {
       "data": {
         "values": [
@@ -319,7 +323,7 @@ const chart11 = {
 
       "mark": {
         "type": "rule",
-        "stroke": "#A44F57",
+        "stroke": "#527FA8",
         "strokeWidth": 1.8
       },
 
@@ -341,7 +345,7 @@ const chart11 = {
       }
     },
 
-    // 11. Decline annotation text
+    // Decline annotation text
     {
       "data": {
         "values": [
@@ -357,13 +361,14 @@ const chart11 = {
       },
 
       "mark": {
+        "font": "Figtree",
         "type": "text",
         "align": "left",
         "baseline": "middle",
         "fontSize": 12,
         "fontWeight": "bold",
         "lineHeight": 19,
-        "color": "#A44F57"
+        "color": "#527FA8"
       },
 
       "encoding": {

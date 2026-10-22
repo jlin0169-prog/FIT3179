@@ -54,7 +54,7 @@ const chart3 = {
         },
 
         "layer": [
-            // 1. Neutral connecting lines
+            // Neutral connecting lines
             {
                 "mark": {
                     "type": "rule",
@@ -84,7 +84,7 @@ const chart3 = {
                 }
             },
 
-            // 2. Revenue points
+            // Revenue points
             {
                 "mark": {
                     "type": "point",
@@ -128,7 +128,7 @@ const chart3 = {
                 }
             },
 
-            // 3. Expenditure points
+            // Expenditure points
             {
                 "mark": {
                     "type": "point",
@@ -173,7 +173,7 @@ const chart3 = {
             },
 
 
-            // 4. Connector lines for FY2025 annotations
+            // Connector lines for FY2025 annotations
             {
                 "transform": [
                     { "filter": "datum.Year === 'FY2025'" },
@@ -206,7 +206,7 @@ const chart3 = {
                 }
             },
 
-            // 5. FY2025 Letters annotation
+            // FY2025 Letters annotation
             {
                 "transform": [
                     {
@@ -224,6 +224,7 @@ const chart3 = {
                     }
                 ],
                 "mark": {
+                    "font": "Figtree",
                     "type": "text",
                     "align": "left",
                     "baseline": "middle",
@@ -251,7 +252,7 @@ const chart3 = {
                 }
             },
 
-            // 6. FY2025 Non-Letters annotation
+            // FY2025 Non-Letters annotation
             {
                 "transform": [
                     {
@@ -269,6 +270,7 @@ const chart3 = {
                     }
                 ],
                 "mark": {
+                    "font": "Figtree",
                     "type": "text",
                     "align": "right",
                     "baseline": "middle",

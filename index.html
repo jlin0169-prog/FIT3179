@@ -13,28 +13,47 @@
    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+   <!-- Google Font -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <!-- Merienda -->
+   <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+   <!-- Hind Siliguri -->
+   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Alike&display=swap" rel="stylesheet">
+
+   <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
    <div class="page">
-      <!-- HERO SECTION -->
+      <!-- Hero section -->
       <header class="postal-hero" id="top">
          <div class="postal-hero-inner">
             <h1 class="postal-hero-title">
                From Letters
                <span>to Deliveries</span>
             </h1>
-            <div class="postal-hero-divider"></div>
             <div class="postal-hero-intro">
                <h2>
-                  Fewer letters. More addresses.
-                  A postal network in transition.
+                  Fewer letters. More parcels. A postal network being reshaped.
                </h2>
                <p>
-                  As Australians send fewer letters and shop more online,
-                  Australia Post faces changing delivery demands.
-                  Explore how these shifts are reshaping postal services,
-                  regional demand and infrastructure.
+                  Australia Post has connected Australians for generations. But the way we communicate and shop is
+                  changing.
+               </p>
+               <p>
+                  As traditional letters decline and online shopping expands, Australia Post faces a growing challenge:
+                  serving more addresses, responding to changing parcel demand and maintaining access to essential
+                  services across the country.
+               </p>
+               <p>
+                  How is Australia's postal network adapting to this transformation?
+               </p>
+               <p>
+                  Explore the trends behind the shift from traditional mail to modern delivery services.
                </p>
             </div>
             <!-- Decorative envelope -->
@@ -44,48 +63,42 @@
          </div>
       </header>
 
-      <!-- MAIN CONTENT -->
+      <!-- Main content -->
       <main class="page-content">
-
-         <!-- STORY OVERVIEW -->
+         <!-- Story overview -->
          <nav class="story-overview" aria-label="Story chapters">
             <a class="overview-item" href="#letters">
                <span class="overview-num">01</span>
-               <strong>The postal paradox</strong>
+               <strong>The paradox</strong>
             </a>
             <a class="overview-item" href="#commerce">
                <span class="overview-num">02</span>
-               <strong>Online commerce</strong>
+               <strong>The Shift</strong>
             </a>
-
             <a class="overview-item" href="#geography">
                <span class="overview-num">03</span>
-               <strong>Delivery geography</strong>
+               <strong>The geography</strong>
             </a>
-
             <a class="overview-item" href="#network">
                <span class="overview-num">04</span>
-               <strong>The network</strong>
+               <strong>The Response</strong>
             </a>
-
             <a class="overview-item" href="#future">
                <span class="overview-num">05</span>
-               <strong>Looking ahead</strong>
+               <strong>The Future</strong>
             </a>
-
          </nav>
 
          <!-- Main Visualisation Content -->
          <!-- Section 1 -->
          <section class="story-section" id="letters">
             <div class="section-header">
-
                <div class="section-label">
                   <span class="section-number">01</span>
                   <span class="section-line"></span>
-                  <span class="section-category">LETTERS</span>
+                  <span class="section-category">THE PARADOX</span>
                </div>
-               <h2>Fewer Letters, but More Addresses to Serve</h2>
+               <h2>Why Is Australia Post Delivering Fewer Letters but Serving More Addresses?</h2>
             </div>
 
             <!-- Chart 1 -->
@@ -112,15 +125,15 @@
                </div>
                <div class="pure-u-1-3">
                   <div class="description description-right">
-
                      <p class="insight-detail">
-                        Due to <strong>electronic substitution</strong>, Australia Post is handling fewer letters each
-                        year. Yet the number of delivery points continues to grow, meaning its postal network must serve
-                        more addresses despite declining letter demand.
+                        As electronic communication replaces traditional mail, Australia's addressed letter volumes fell
+                        by <span class="highlight-letters">38% between 2019 and 2024</span>, while delivery points
+                        increased to <span class="highlight-delivery">12.7 million</span>. This widening gap puts
+                        pressure on delivery costs, as fewer letters must be delivered across a growing network.
+                     </p>
                      <p class="insight-detail">
-                        This widening gap puts pressure on delivery costs and efficiency. To adapt, <strong>Australia
-                           Post introduced every-second-business-day delivery for regular letters in 2024</strong>,
-                        reflecting how the postal service is responding to changing communication habits.
+                        To adapt, Australia Post introduced <strong>every-second-business-day delivery for regular
+                           letters in 2024</strong>, reflecting its response to declining demand.
                      </p>
                   </div>
                </div>
@@ -133,23 +146,23 @@
                      <div class="chart-header">
                         <h3>From Physical Letters to Digital Communication</h3>
                      </div>
-
                      <div id="chart2" class="chart-container"></div>
                   </div>
                </div>
                <div class="pure-u-1-3">
                   <div class="description description-right">
                      <p class="insight-detail">
-                        By <strong>2023, messaging-app usage had reached approximately 78% of Australian
-                           adults</strong>, reflecting how widely digital communication had become part of everyday
-                        life. Meanwhile, physical letter volumes continued to decline, highlighting the growing contrast
-                        between digital communication and traditional mail.
+                        By 2023, <span class="highlight-messaging">78% of Australian adults used messaging apps</span>,
+                        while physical letter volumes continued to decline, <span
+                           class="highlight-letter-change">falling by approximately 6% that year</span>.
                      </p>
                      <p class="insight-detail">
-                        Interestingly, <strong>messaging-app usage remained relatively stable after 2023, but letter
-                           volumes continued falling</strong>. This suggests that the decline in physical correspondence
-                        is part of a broader digital transition, involving not only messaging apps but also online
-                        billing, banking and electronic services.
+                        This contrast reflects a broader shift towards digital communication, as everyday messages,
+                        bills and notices increasingly move online, reducing reliance on traditional mail.
+                     </p>
+                     <p class="insight-detail">
+                        <strong>However, fewer letters do not necessarily mean less demand for Australia Post's
+                           services.</strong>
                      </p>
                   </div>
                </div>
@@ -159,25 +172,20 @@
             <div class="pure-g">
                <div class="pure-u-2-3">
                   <div class="feature-chart">
-                     <div class="chart-header chart3-header">
-
-                        <div class="chart-header-text">
+                     <div class="chart-header">
                            <h3>Australia Post's Two-Speed Business</h3>
-                        </div>
-
+                     </div>
+                        <!-- legend -->
                         <div class="chart-legend">
                            <span class="legend-item">
                               <span class="legend-dot revenue"></span>
                               Revenue
                            </span>
-
                            <span class="legend-item">
                               <span class="legend-dot expenditure"></span>
                               Expenditure
                            </span>
                         </div>
-                     </div>
-
                      <div id="chart3" class="chart-container"></div>
                   </div>
                </div>
@@ -185,16 +193,21 @@
                   <div class="description description-right">
                      </p>
                      <p class="insight-detail">
-                        Australia Post's financial performance reveals a growing divide between its services. Despite
-                        changes in postal demand, the <strong>Letters business remained loss-making throughout
-                           FY2021-FY2025</strong>, reflecting the financial pressure of maintaining traditional mail
-                        services.
+                        Australia Post's <strong>Letters</strong> business remained loss-making throughout
+                        FY2021-FY2025. In FY2025, its expenditure exceeded revenue by approximately <strong>$230.4
+                           million</strong>.
                      </p>
                      <p class="insight-detail">
-                        In contrast, <strong>non-letter operations consistently generated positive results</strong>. By
-                        FY2025, Letters recorded a <strong>$230.4 million loss</strong>, while Non-Letters delivered a
-                        <strong>$313.6 million surplus</strong>. This contrast highlights the importance of Australia
-                        Post's broader parcel and services operations as traditional letter demand declines.
+                        Meanwhile, <strong>non-letter</strong> operations recorded a surplus of approximately
+                        <strong>$313.6 million</strong>.
+                     </p>
+                     <p class="insight-detail">
+                        The contrast reveals why Australia Post cannot rely on its traditional letters business alone.
+                        As letter demand weakens, parcels and other services play an increasingly important role in
+                        supporting the organisation.
+                     </p>
+                     <p class="insight-detail">
+                        <strong>So, what is creating this new demand?</strong>
                      </p>
                   </div>
                </div>
@@ -204,14 +217,12 @@
          <!-- Section 2 -->
          <section class="story-section" id="commerce">
             <div class="section-header">
-
                <div class="section-label">
                   <span class="section-number">02</span>
                   <span class="section-line"></span>
-                  <span class="section-category">COMMERCE</span>
+                  <span class="section-category">THE SHIFT</span>
                </div>
-
-               <h2>Meanwhile, Online Shopping Is Expanding</h2>
+               <h2>If Letters Are Declining, What's Driving Delivery Demand?</h2>
             </div>
 
             <!-- Chart 4 -->
@@ -221,24 +232,35 @@
                      <div class="chart-header">
                         <h3>Online Retail Becomes a Larger Share of Australian Spending</h3>
                      </div>
+                     <!-- legend -->
+                     <div class="chart-legend">
+                        <span class="legend-item">
+                           <span class="legend-box first-lockdown"></span>
+                           First COVID-19 impact (Apr 2020)
+                        </span>
+                        <span class="legend-item">
+                           <span class="legend-box delta-lockdown"></span>
+                           Delta lockdowns (Aug-Sep 2021)
+                        </span>
+                     </div>
                      <div id="chart4" class="chart-container"></div>
                   </div>
                </div>
-
                <div class="pure-u-1-3">
                   <div class="description description-right">
                      <p class="insight-detail">
-                        Online shopping has become an increasingly important part of Australian retail. The share of
-                        retail spending online rose from <strong>2.1% in July 2013 to 12.7% in June 2025</strong>, with
-                        a particularly sharp increase during <strong>2020-2021</strong>, when pandemic restrictions
-                        accelerated the shift towards online purchasing.
+                        Following the <strong>first COVID-19 lockdowns</strong> in <strong>March 2020</strong>, online
+                        retail's share jumped from 7.1% to <span class="highlight-lockdown">11.1% in April</span>, as
+                        restrictions encouraged consumers to shop online.
                      </p>
-
                      <p class="insight-detail">
-                        Although online retail's share eased from its earlier peaks, it remained well above pre-pandemic
-                        levels. For Australia Post, this shift provides an important context for the growing role of
-                        <strong>parcel delivery and e-commerce logistics</strong>, even as traditional letter volumes
-                        continue to decline.
+                        During the <strong>2021 Delta outbreaks</strong>, extended lockdowns in major cities further
+                        disrupted in-store shopping, coinciding with online retail's highest share of <span
+                           class="highlight-delta">15.3% in September 2021</span>.
+                     </p>
+                     <p class="insight-detail">
+                        Even after restrictions eased, online retail remained above pre-pandemic levels, reaching
+                        <strong>12.7% in June 2025</strong>, reflecting a lasting shift towards online shopping.
                      </p>
                   </div>
                </div>
@@ -253,59 +275,53 @@
                            Online Shopping Surges Differed by Category
                         </h3>
                      </div>
-
-                     <!-- Legend above the chart -->
+                     <!-- Legend -->
                      <div class="chart-legend">
                         <span class="legend-item">
-                           <span class="legend-dot decrease"></span>
+                           <span class="legend-dot chart-5-decrease"></span>
                            Decrease
                         </span>
-
                         <span class="legend-item">
-                           <span class="legend-dot increase"></span>
+                           <span class="legend-dot chart-5-increase"></span>
                            Increase
                         </span>
-
                      </div>
                      <div id="chart5" class="chart-container"></div>
                      <span class="legend-note">
                         Each colour band represents up to 10 percentage points of monthly change. Darker colours
                         indicate larger changes; the bands are overlaid within the same 0-10% height.
                      </span>
-
                   </div>
                </div>
-
                <div class="pure-u-1-3">
                   <div class="description description-right">
                      <p class="insight-detail">
-                        The early pandemic brought <strong>sharp but uneven changes in online shopping</strong>. Online
-                        non-food retailing surged by <strong>38.2% in April 2020</strong>, followed by a <strong>27.1%
-                           increase in online food retailing in May 2020</strong>.
+                        The first COVID-19 lockdowns triggered sharp increases in online shopping, with <strong>non-food
+                           retail surging 38.2% in April 2020</strong>, followed by <strong>27.1% growth in online food
+                           retail in May</strong>.
                      </p>
                      <p class="insight-detail">
-                        These peaks highlight how different retail categories responded at different times. Yet the
-                        frequent increases and decreases across later years also reveal that <strong>online retail
-                           growth was far from steady</strong>. While online shopping became a larger part of Australian
-                        retail, its month-to-month performance remained volatile.
+                        These uneven spikes suggest that shopping habits shifted at different speeds across categories.
+                        Although monthly growth remained volatile, online shopping became a more established part of
+                        Australian retail.
+                     </p>
+                     <p class="insight-detail">
+                        <strong>But did this growing delivery demand spread evenly across Australia?</strong>
                      </p>
                   </div>
                </div>
             </div>
-
          </section>
 
          <!-- Section 3 -->
          <section class="story-section" id="geography">
             <div class="section-header">
-
                <div class="section-label">
                   <span class="section-number">03</span>
                   <span class="section-line"></span>
-                  <span class="section-category">GEOGRAPHY</span>
+                  <span class="section-category">THE GEOGRAPHY</span>
                </div>
-
-               <h2>But Delivery Demand Is Not Growing Evenly</h2>
+               <h2>Is Australia's Parcel Boom Happening Everywhere?</h2>
             </div>
 
             <!-- Chart 6 -->
@@ -318,20 +334,20 @@
                      <div id="chart6" class="chart-container"></div>
                   </div>
                </div>
-
                <div class="pure-u-1-3">
                   <div class="description description-right">
                      <p class="insight-detail">
-                        <strong>The largest online shopping market is not necessarily the highest-spending per
-                           resident</strong>. New South Wales leads in total online spending at $26.4 billion, followed
-                        by Victoria at <strong>$20.0 billion</strong>. However, the Australian Capital Territory records
-                        the highest spending per resident at <strong>$3,529</strong>, compared with <strong>$3,089 in
-                           New South Wales</strong>.
+                        <span class="large">New South Wales</span> leads Australia's online shopping market with $26.4
+                        billion in spending, followed by <span class="large">Victoria</span> at $20.0 billion. However,
+                        the <span class="large">Australian Capital Territory</span> records the highest estimated
+                        spending per resident at $3,529, compared with $3,089 in NSW.
                      </p>
-
                      <p class="insight-detail">
-                        This contrast reveals how population size influences total market spending, while per-resident
-                        figures offer a different perspective on regional online shopping activity.
+                        This contrast shows that larger populations contribute to higher total spending, while spending
+                        per resident reveals differences in shopping activity.
+                     </p>
+                     <p class="insight-detail">
+                        <strong>But do the largest online shopping markets also experience the fastest growth?</strong>
                      </p>
                   </div>
                </div>
@@ -342,7 +358,7 @@
                <div class="pure-u-2-3">
                   <div class="feature-chart">
                      <div class="chart-header">
-                        <h3>Parcel Growth Rates Vary Across Australia</h3>
+                        <h3>Online Shopping Growth Varies Across Australia</h3>
                      </div>
                      <div id="chart7" class="chart-container"></div>
                   </div>
@@ -350,15 +366,17 @@
                <div class="pure-u-1-3">
                   <div class="description description-right">
                      <p class="insight-detail">
-                        <strong>Parcel growth is not evenly distributed across Australia</strong>. The Northern
-                        Territory (12.4%) and Tasmania (11.4%) recorded the highest parcel-volume growth rates, while
-                        New South Wales (5.2%) and Victoria (5.8%) experienced more moderate increases.
+                        While NSW and Victoria dominate total online spending, the <span class="large">Northern
+                           Territory (12.4%)</span> and
+                        <span class="large">Tasmania (11.4%)</span> recorded faster online purchase growth than
+                        NSW <strong>(5.2%)</strong> and
+                        Victoria <strong>(5.8%)</strong> during the 2024 peak shopping period
                      </p>
                      <p class="insight-detail">
-                        This contrast shows that <strong>regions with smaller online shopping markets can experience
-                           faster parcel growth</strong>, highlighting differences in the pace of change across
-                        Australia. However, higher percentage growth does not necessarily mean a greater number of
-                        parcels delivered.
+                        Major sales events such as <strong>Black Friday and Cyber Monday</strong> helped drive
+                        nationwide shopping activity. Australia Post delivered a record <strong>102.8 million parcels
+                           during November-December 2024</strong>, up <strong>3.1%</strong> year-on-year, highlighting
+                        the growing importance of parcel delivery across Australia.
                      </p>
                   </div>
                </div>
@@ -367,14 +385,12 @@
          <!-- Section 4 -->
          <section class="story-section" id="network">
             <div class="section-header">
-
                <div class="section-label">
                   <span class="section-number">04</span>
                   <span class="section-line"></span>
-                  <span class="section-category">NETWORK</span>
+                  <span class="section-category">THE RESPONSE</span>
                </div>
-
-               <h2>The Postal Network Is Changing With Delivery Demand</h2>
+               <h2>How Is Australia Post Reshaping Its Network?</h2>
             </div>
 
             <!-- Chart 8 -->
@@ -384,22 +400,27 @@
                      <div class="chart-header">
                         <h3>Where Is Australia's Postal Network Concentrated?</h3>
                      </div>
-
                      <div id="chart8" class="chart-container"></div>
                   </div>
                </div>
-
                <div class="pure-u-1-3">
                   <div class="description description-right">
                      <p class="insight-detail">
-                        Mapped post offices and post boxes cluster along the eastern and southeastern coasts,
-                        particularly around major cities, while inland Australia has a much sparser distribution.
+                        Australia's post offices and post boxes are heavily
+                        concentrated along the
+                        <span class="large">eastern</span> and <span class="large">southeastern</span>
+                        <strong>coasts</strong>,
+                        particularly around major cities, while inland regions
+                        have far fewer mapped facilities.
                      </p>
                      <p class="insight-detail">
-                        This pattern illustrates the challenge of maintaining postal access across Australia's vast
-                        geography. As traditional mail volumes decline and parcel demand changes, <strong>Australia Post
-                           faces the task of balancing nationwide accessibility with an evolving delivery
-                           network</strong>.
+                        This uneven distribution reflects Australia's population
+                        geography but also highlights the challenge of maintaining
+                        <strong>nationwide postal accessibility</strong>.
+                        As parcel demand grows and traditional letter volumes
+                        decline, Australia Post must balance network efficiency
+                        with access to essential services across regional
+                        and remote communities.
                      </p>
                   </div>
                </div>
@@ -412,22 +433,44 @@
                      <div class="chart-header">
                         <h3>From Street Posting Boxes to Parcel Lockers</h3>
                      </div>
-
+                     <!-- legend -->
+                     <div class="chart-legend">
+                        <span class="legend-item">
+                           <span class="legend-dot chart-9-increase"></span>
+                           Increase
+                        </span>
+                        <span class="legend-item">
+                           <span class="legend-dot chart-9-decrease"></span>
+                           Decrease
+                        </span>
+                     </div>
                      <div id="chart9" class="chart-container"></div>
+                     <span class="legend-note">
+                        Note: eDVs = electric delivery vehicles;
+                        eAMBs = electric-assisted mail bicycles.
+                     </span>
                   </div>
                </div>
                <div class="pure-u-1-3">
                   <div class="description description-right">
-
                      <p class="insight-detail">
-                        From FY2024 to FY2025, <strong>parcel locker banks increased by 18.9%</strong>, while street
-                        posting boxes declined by 15.6%. Post offices also decreased by 1.9%, whereas delivery points
-                        continued to grow slightly by 0.8%.
+                        The <span class="highlight-increase">18.9% increase
+                           in parcel locker banks</span> reflects Australia
+                        Post's growing focus on convenient parcel collection.
+                        With <strong>24/7 access</strong>, parcel lockers
+                        allow customers to collect online purchases at their
+                        preferred time, reducing the inconvenience of
+                        missed home deliveries.
                      </p>
-
                      <p class="insight-detail">
-                        These contrasting trends suggest that Australia Post is adapting its infrastructure to changing
-                        delivery needs, while maintaining an extensive delivery network.
+                        Meanwhile, the
+                        <span class="highlight-decrease">15.6% decline
+                           in street posting boxes</span> is consistent with
+                        falling demand for traditional letters. This shift
+                        highlights how Australia Post is
+                        <strong>adapting its infrastructure to changing
+                           customer habits</strong>, while still needing to
+                        maintain essential postal services across Australia.
                      </p>
                   </div>
                </div>
@@ -440,24 +483,57 @@
                      <div class="chart-header">
                         <h3>Post Offices Play Different Roles Across Australia</h3>
                      </div>
+                     <!-- legend -->
+                     <div class="chart-legend">
+                        <span class="legend-item">
+                           <span class="legend-dot postage"></span>
+                           Postage
+                        </span>
 
+                        <span class="legend-item">
+                           <span class="legend-dot financial"></span>
+                           Financial services
+                        </span>
+
+                        <span class="legend-item">
+                           <span class="legend-dot identity"></span>
+                           Identity services
+                        </span>
+
+                        <span class="legend-item">
+                           <span class="legend-dot other"></span>
+                           Other services
+                        </span>
+
+                        <span class="legend-item">
+                           <span class="legend-dot consumer"></span>
+                           Consumer products
+                        </span>
+                     </div>
                      <div id="chart10" class="chart-container"></div>
                   </div>
                </div>
-
                <div class="pure-u-1-3">
                   <div class="description description-right">
 
                      <p class="insight-detail">
-                        In major cities, <strong>accounted for 38%</strong> of post-office transactions, compared with
-                        <strong>22% in very remote areas</strong>. By contrast, <strong>financial services represented
-                           45%</strong> of transactions in very remote Australia, compared with <strong>32% in major
-                           cities</strong>.
+                        In major cities,
+                        <span class="highlight-postage">postage accounts for 38%</span>
+                        of post-office transactions, but only
+                        <span class="highlight-postage">22% in very remote areas</span>.
+                        In contrast,
+                        <span class="highlight-financial">financial services make up 45%</span>
+                        of transactions in very remote communities, compared with
+                        <span class="highlight-financial">32% in major cities</span>.
                      </p>
-
                      <p class="insight-detail">
-                        This contrast highlights how post offices provide more than mail services, particularly in
-                        remote communities where financial services account for a larger share of transactions.
+                        This difference shows that post offices are more than
+                        places to send letters and parcels. In remote communities,
+                        they also provide access to essential financial services
+                        where banking options may be limited. As Australia Post
+                        expands its parcel infrastructure,
+                        <strong>maintaining these community services remains
+                           just as important as modernising deliveries</strong>.
                      </p>
                   </div>
                </div>
@@ -467,15 +543,14 @@
          <!-- Section 5 -->
          <section class="story-section" id="future">
             <div class="section-header">
-
                <div class="section-label">
                   <span class="section-number">05</span>
                   <span class="section-line"></span>
-                  <span class="section-category">FUTURE</span>
+                  <span class="section-category">THE FUTURE</span>
                </div>
-
-               <h2>The Transformation Is Not Over</h2>
+               <h2>Can Australia Post Keep Up With a Changing Australia?</h2>
             </div>
+
             <!-- Chart 11 -->
             <div class="pure-g">
                <div class="pure-u-2-3">
@@ -486,21 +561,21 @@
                      <div id="chart11" class="chart-container"></div>
                   </div>
                </div>
-
                <div class="pure-u-1-3">
                   <div class="description description-right">
-
                      <p class="insight-detail">
-                        The mean forecast projects a <strong>27% decline in letter volumes</strong>, from <strong>1,048
-                           million in FY2025-26 to 770 million in FY2028-29</strong>. Even under the optimistic
-                        scenario, letter volumes are expected to continue falling.
+                        Letter volumes are projected to fall by another
+                        <span class="highlight-forecast">27% by FY2028-29</span>, from
+                        <span class="large">1,048 million</span> to just <span class="large">770 million</span>
+                        under the mean forecast. Even the optimistic
+                        scenario predicts continued decline, suggesting
+                        that traditional mail is unlikely to recover.
                      </p>
-
                      <p class="insight-detail">
-                        This reinforces the challenge facing Australia Post: <strong>maintaining nationwide postal
-                           access while adapting its network to changing demand</strong>. As traditional mail declines,
-                        the expansion of parcel lockers and other delivery infrastructure illustrates how the postal
-                        network is evolving.
+                        With fewer letters being delivered, <strong>the cost of serving each address may rise</strong>,
+                        particularly as the number of delivery points continues to grow. This could place further
+                        pressure on Australia Post's already loss-making Letters business, making improvements in
+                        delivery efficiency increasingly important.
                      </p>
                   </div>
                </div>
@@ -509,47 +584,42 @@
       </main>
 
       <!-- Closing Section -->
-         <section aria-labelledby="closing-title" class="closing-section">
-            <span class="closing-eyebrow">THE BIG PICTURE</span>
-            <h2 id="closing-title">The Mailbox Is Changing - Not Disappearing.</h2>
-            <p>Australia Post's transformation is not simply a story
-               of letters being replaced by parcels. Letter volumes
-               are declining even as delivery points grow. Meanwhile,
-               online shopping is expanding, regional demand is
-               changing, and postal infrastructure is adapting to
-               new delivery and collection needs.</p>
-            <p class="method-note"><strong>The challenge ahead is to adapt to changing
-                  demands while continuing to serve communities
-                  across Australia.</strong>
-            </p><a class="back-to-top" href="#top">Back to top ↑</a>
-         </section>
+      <section aria-labelledby="closing-title" class="closing-section">
+         <h1 id="closing-title">The Mailbox Is Changing - Not Disappearing.</h1>
+         <p>Australia Post's transformation is not simply a story
+            of letters being replaced by parcels. Letter volumes
+            are declining even as delivery points grow. Meanwhile,
+            online shopping is expanding, regional demand is
+            changing, and postal infrastructure is adapting to
+            new delivery and collection needs.</p>
+         <p class="method-note"><strong>The challenge ahead is to adapt to changing
+               demands while continuing to serve communities
+               across Australia.</strong>
+         </p><a class="back-to-top" href="#top">Back to top ↑</a>
+      </section>
 
-         <footer class="dashboard-footer">
-
-            <div class="footer-meta">
-               <div>
-                  <span class="footer-label">AUTHOR</span>
-                  <p>Joyce Ling Jia Jin</p>
-               </div>
-
-               <div>
-                  <span class="footer-label">StudentID</span>
-                  <p>34599630</p>
-               </div>
-
-               <div>
-                  <span class="footer-label">Last Updated</span>
-                  <p>20 October 2026</p>
-               </div>
+      <footer class="dashboard-footer">
+         <div class="footer-meta">
+            <div>
+               <span class="footer-label">AUTHOR</span>
+               <p>Joyce Ling Jia Jin</p>
             </div>
-
-            <div class="footer-sources">
-               <span class="footer-label">DATA SOURCES</span>
-               <p>
-                  
-               </p>
+            <div>
+               <span class="footer-label">StudentID</span>
+               <p>34599630</p>
             </div>
-         </footer>
+            <div>
+               <span class="footer-label">Last Updated</span>
+               <p>20 October 2026</p>
+            </div>
+         </div>
+         <div class="footer-sources">
+            <span class="footer-label">DATA SOURCES</span>
+            <p>
+
+            </p>
+         </div>
+      </footer>
 
       <script src="./js/line-bar-chart.js"></script>
       <script src="./js/dual-line.js"></script>

@@ -5,7 +5,7 @@ const chart8 = {
   "height": 420,
   "background": null,
 
-  // 1. Interactive controls
+  // Interactive controls
   "params": [
     {
       "name": "FacilityFilter",
@@ -63,7 +63,7 @@ const chart8 = {
     }
   ],
 
-  // 2. Map projection
+  // Map projection
   "projection": {
     "type": "mercator",
     "center": { "expr": "center_to" },
@@ -72,7 +72,7 @@ const chart8 = {
   },
 
   "layer": [
-    // 3. Australian state boundaries
+    // Australian state boundaries
     {
       "data": {
         "url": "js/states.geojson",
@@ -91,7 +91,7 @@ const chart8 = {
       }
     },
 
-    // 4. Postal facility points
+    // Postal facility points
     {
       "data": {
         "url": "data/australia_postal_facilities.csv"

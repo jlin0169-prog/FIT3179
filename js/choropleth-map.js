@@ -9,7 +9,7 @@ const chart6 = {
     },
 
     hconcat: [
-        // LEFT: NORMALISED CHOROPLETH
+        // Left: Choropleth map
         {
             width: 300,
             height: 320,
@@ -17,8 +17,12 @@ const chart6 = {
             title: {
                 text: "Online Spending Per Resident",
                 subtitle: "Darker areas indicate higher spending per person",
+                font: "Libre Baskerville",
                 fontSize: 15,
-                subtitleFontSize: 11,
+                fontWeight: 700,
+                subtitleFont: "Figtree",
+                subtitleFontSize: 12,
+                subtitleFontWeight: 400,
                 color: "#26384E",
                 subtitleColor: "#65778C",
                 anchor: "start"
@@ -96,6 +100,8 @@ const chart6 = {
                         zero: false
                     },
                     legend: {
+                        labelFont: "Figtree",
+                        titleFont: "Figtree",
                         orient: "bottom",
                         direction: "horizontal",
                         format: ",.0f"
@@ -139,7 +145,7 @@ const chart6 = {
             }
         },
 
-        // RIGHT: LINKED BAR CHART
+        // Right: bar chart
         {
             width: 170,
             height: 300,
@@ -147,8 +153,12 @@ const chart6 = {
             title: {
                 text: "Total Online Spending by State",
                 subtitle: "Click a state on the map to highlight",
+                font: "Libre Baskerville",
                 fontSize: 15,
-                subtitleFontSize: 11,
+                fontWeight: 700,
+                subtitleFont: "Figtree",
+                subtitleFontSize: 12,
+                subtitleFontWeight: 400,
                 color: "#26384E",
                 subtitleColor: "#65778C",
                 anchor: "start"

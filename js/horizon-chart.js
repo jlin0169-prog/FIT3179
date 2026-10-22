@@ -177,7 +177,6 @@ const chart5 = {
                 }
             },
 
-
             // Annotation lines - highlighted pandemic surges
             {
                 "transform": [
@@ -231,6 +230,7 @@ const chart5 = {
                     }
                 ],
                 "mark": {
+                    font: "Figtree",
                     "type": "text",
                     "align": "left",
                     "baseline": "top",

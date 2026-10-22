@@ -70,7 +70,7 @@ const chart9 = {
     },
 
     "layer": [
-        // 1. Zero reference line
+        // Zero reference line
         {
             "mark": {
                 "type": "rule",
@@ -84,7 +84,7 @@ const chart9 = {
             }
         },
 
-        // 2. Diverging bars
+        // Diverging bars
         {
             "mark": {
                 "type": "bar",
@@ -100,14 +100,7 @@ const chart9 = {
                         "domain": ["Increase", "Decrease"],
                         "range": ["#e016dc", "#E58A43"]
                     },
-                    "legend": {
-                        "orient": "bottom",
-                        "title": null,
-                        "direction": "horizontal",
-                        "labelFontSize": 12,
-                        "labelColor": "#56677B",
-                        "symbolType": "square"
-                    }
+                    "legend": null
                 },
 
                 "tooltip": [
@@ -132,7 +125,7 @@ const chart9 = {
             }
         },
 
-        // 3. Positive percentage labels
+        // Positive percentage labels
         {
             "transform": [
                 {
@@ -141,12 +134,13 @@ const chart9 = {
             ],
 
             "mark": {
+                "font": "Figtree",
                 "type": "text",
                 "align": "left",
                 "dx": 7,
-                "fontSize": 13,
+                "fontSize": 12,
                 "fontWeight": "bold",
-                "color": "#333333"
+                "color": "#e016dc"
             },
 
             "encoding": {
@@ -157,7 +151,7 @@ const chart9 = {
             }
         },
 
-        // 4. Negative percentage labels
+        // Negative percentage labels
         {
             "transform": [
                 {
@@ -166,12 +160,13 @@ const chart9 = {
             ],
 
             "mark": {
+                "font": "Figtree",
                 "type": "text",
                 "align": "right",
                 "dx": -7,
-                "fontSize": 13,
+                "fontSize": 12,
                 "fontWeight": "bold",
-                "color": "#333333"
+                "color": "#E58A43"
             },
 
             "encoding": {

@@ -10,7 +10,7 @@ const chart7 = {
     },
 
     "layer": [
-        // 1. Australian state boundaries
+        // Australian state boundaries
         {
             "data": {
                 "url": "js/states.geojson",
@@ -28,10 +28,10 @@ const chart7 = {
             }
         },
 
-        // 2. Proportional circles
+        // Proportional circles
         {
             "data": {
-                "url": "data/parcel_growth_by_state.csv",
+                "url": "data/online_shopping_growth_by_state.csv",
                 "format": {
                     "type": "csv",
                     "parse": {
@@ -83,7 +83,7 @@ const chart7 = {
                 "size": {
                     "field": "Growth",
                     "type": "quantitative",
-                    "title": "Parcel growth (%)",
+                    "title": "Online purchase growth (%)",
                     "scale": {
                         "type": "linear",
                         "domain": [0, 13],
@@ -112,17 +112,17 @@ const chart7 = {
                     {
                         "field": "Growth",
                         "type": "quantitative",
-                        "title": "Parcel-volume growth (%)",
+                        "title": "Online purchase growth (%)",
                         "format": ".1f"
                     }
                 ]
             }
         },
 
-        // 3. Labels for highest and lowest growth rates
+        // Labels for highest and lowest growth rates
         {
             "data": {
-                "url": "data/parcel_growth_by_state.csv"
+                "url": "data/online_shopping_growth_by_state.csv"
             },
 
             "transform": [
@@ -169,6 +169,7 @@ const chart7 = {
             ],
 
             "mark": {
+                font: "Figtree",
                 "type": "text",
                 "fontSize": 11,
                 "fontWeight": "bold",
@@ -199,6 +200,8 @@ const chart7 = {
             "stroke": null
         },
         "legend": {
+            "labelFont": "Figtree",
+            "titleFont": "Figtree",
             "labelFontSize": 11,
             "titleFontSize": 12,
             "labelColor": "#555555",

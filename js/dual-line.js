@@ -34,7 +34,7 @@ const chart2 = {
 
   "vconcat": [
 
-    // PANEL A - PHYSICAL LETTER VOLUMES
+    // Panel A - Pyhsical letter volumes
     {
       "width": 520,
       "height": 170,
@@ -43,8 +43,13 @@ const chart2 = {
         "text": "A. Physical Letter Volumes",
         "subtitle": "Annual change in total letter volumes (%)",
         "anchor": "start",
+        "font": "Libre Baskerville",
         "fontSize": 15,
+        "fontWeight": 700,
+        "subtitleFont": "Figtree",
         "subtitleFontSize": 12,
+        "subtitleFontWeight": 400,
+        
         "color": "#26384E",
         "subtitleColor": "#65778C"
       },
@@ -186,7 +191,7 @@ const chart2 = {
       ]
     },
 
-    // PANEL B - MESSAGING APP USAGE
+    // Panel B - Messaging app usage
     {
       "width": 600,
       "height": 170,
@@ -195,8 +200,12 @@ const chart2 = {
         "text": "B. Messaging App Usage",
         "subtitle": "Australian adults using messaging apps (%)",
         "anchor": "start",
+        "font": "Libre Baskerville",
         "fontSize": 15,
+        "fontWeight": 700,
+        "subtitleFont": "Figtree",
         "subtitleFontSize": 12,
+        "subtitleFontWeight": 400,
         "color": "#26384E",
         "subtitleColor": "#65778C"
       },

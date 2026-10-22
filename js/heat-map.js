@@ -1,3 +1,62 @@
+const chart4Months = [
+    "Jan", "Feb", "Mar", "Apr",
+    "May", "Jun", "Jul", "Aug",
+    "Sep", "Oct", "Nov", "Dec"
+];
+
+// Shared tooltip for the heatmap and all highlighted cells
+const chart4Tooltip = [
+    { field: "Year", type: "ordinal", title: "Year" },
+    { field: "Month", type: "nominal", title: "Month" },
+    {
+        field: "Online_Share",
+        type: "quantitative",
+        title: "Online retail share (%)",
+        format: ".1f"
+    }
+];
+
+// Helper: highlighted cell with tooltip
+function chart4Highlight(filter, stroke, strokeWidth = 3) {
+    return {
+        transform: [{ filter }],
+        mark: {
+            type: "rect",
+            fillOpacity: 0,
+            stroke: stroke,
+            strokeWidth: strokeWidth
+        },
+        encoding: {
+            tooltip: chart4Tooltip
+        }
+    };
+}
+
+// Helper: percentage label with tooltip
+function chart4Label(filter, color) {
+    return {
+        transform: [
+            { filter },
+            {
+                calculate:
+                    "format(datum.Online_Share, '.1f') + '%'",
+                as: "Label"
+            }
+        ],
+        mark: {
+            type: "text",
+            font: "Figtree",
+            fontSize: 12,
+            fontWeight: "bold",
+            color: color
+        },
+        encoding: {
+            text: { field: "Label" },
+            tooltip: chart4Tooltip
+        }
+    };
+}
+
 const chart4 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container",
@@ -12,11 +71,7 @@ const chart4 = {
         "x": {
             "field": "Month",
             "type": "ordinal",
-            "sort": [
-                "Jan", "Feb", "Mar", "Apr",
-                "May", "Jun", "Jul", "Aug",
-                "Sep", "Oct", "Nov", "Dec"
-            ],
+            "sort": chart4Months,
             "title": "Month",
             "axis": {
                 "labelColor": "#56677B",
@@ -44,12 +99,12 @@ const chart4 = {
     },
 
     "layer": [
-        // 1. Heatmap
+        // Heatmap
         {
             "mark": {
-                "type": "rect"
+                "type": "rect",
+                "tooltip": true
             },
-
             "encoding": {
                 "color": {
                     "field": "Online_Share",
@@ -67,123 +122,76 @@ const chart4 = {
                         ]
                     },
                     "legend": {
+                        "labelFont": "Figtree",
+                        "titleFont": "Figtree",
                         "titleColor": "#26384E",
                         "labelColor": "#56677B",
                         "gradientLength": 180
                     }
                 },
-
-                "tooltip": [
-                    {
-                        "field": "Year",
-                        "title": "Year"
-                    },
-                    {
-                        "field": "Month",
-                        "title": "Month"
-                    },
-                    {
-                        "field": "Online_Share",
-                        "type": "quantitative",
-                        "title": "Online retail share (%)",
-                        "format": ".1f"
-                    }
-                ]
+                "tooltip": chart4Tooltip
             }
         },
 
-        // 2. Highlight July 2013
-        {
-            "transform": [
-                {
-                    "filter":
-                        "datum.Year == 2013 && datum.Month == 'Jul'"
-                }
-            ],
-            "mark": {
-                "type": "rect",
-                "fillOpacity": 0,
-                "stroke": "#603D65",
-                "strokeWidth": 2.5
-            }
-        },
+        // First observation: July 2013
+        chart4Highlight(
+            "datum.Year == 2013 && datum.Month == 'Jul'",
+            "#603D65",
+            2.5
+        ),
 
-        // 3. Highlight June 2025
-        {
-            "transform": [
-                {
-                    "filter":
-                        "datum.Year == 2025 && datum.Month == 'Jun'"
-                }
-            ],
-            "mark": {
-                "type": "rect",
-                "fillOpacity": 0,
-                "stroke": "#FFFFFF",
-                "strokeWidth": 2.5
-            }
-        },
+        // First COVID-19 lockdown: April 2020
+        chart4Highlight(
+            "datum.Year == 2020 && datum.Month == 'Apr'",
+            "#76B900",
+            3
+        ),
 
-        // 4. July 2013 label
-        {
-            "transform": [
-                {
-                    "filter":
-                        "datum.Year == 2013 && datum.Month == 'Jul'"
-                },
-                {
-                    "calculate":
-                        "format(datum.Online_Share, '.1f') + '%'",
-                    "as": "Label"
-                }
-            ],
-            "mark": {
-                "type": "text",
-                "font": "Arial",
-                "fontSize": 12,
-                "fontWeight": "bold",
-                "color": "#603D65"
-            },
-            "encoding": {
-                "text": {
-                    "field": "Label"
-                }
-            }
-        },
+        // Delta lockdowns: Aug-Sep 2021
+        chart4Highlight(
+            "datum.Year == 2021 && " +
+            "(datum.Month == 'Aug' || datum.Month == 'Sep')",
+            "#008F89",
+            3
+        ),
 
-        // 5. June 2025 label
-        {
-            "transform": [
-                {
-                    "filter":
-                        "datum.Year == 2025 && datum.Month == 'Jun'"
-                },
-                {
-                    "calculate":
-                        "format(datum.Online_Share, '.1f') + '%'",
-                    "as": "Label"
-                }
-            ],
-            "mark": {
-                "type": "text",
-                "font": "Arial",
-                "fontSize": 12,
-                "fontWeight": "bold",
-                "color": "#FFFFFF"
-            },
-            "encoding": {
-                "text": {
-                    "field": "Label"
-                }
-            }
-        }
+        // Last observation: June 2025
+        chart4Highlight(
+            "datum.Year == 2025 && datum.Month == 'Jun'",
+            "#FFFFFF",
+            2.5
+        ),
+
+        // First observation label: 2.1%
+        chart4Label(
+            "datum.Year == 2013 && datum.Month == 'Jul'",
+            "#603D65"
+        ),
+
+        // First lockdown label: 11.1%
+        chart4Label(
+            "datum.Year == 2020 && datum.Month == 'Apr'",
+            "#FFFFFF"
+        ),
+
+        // Delta lockdown labels: 15.0%, 15.3%
+        chart4Label(
+            "datum.Year == 2021 && " +
+            "(datum.Month == 'Aug' || datum.Month == 'Sep')",
+            "#FFFFFF"
+        ),
+
+        // Last observation label: 12.7%
+        chart4Label(
+            "datum.Year == 2025 && datum.Month == 'Jun'",
+            "#FFFFFF"
+        )
     ],
 
     "config": {
         "view": {
             "stroke": null
         },
-
         "axis": {
             "grid": false,
             "labelFontSize": 12,
