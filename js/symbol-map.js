@@ -83,7 +83,7 @@ const chart7 = {
                 "size": {
                     "field": "Growth",
                     "type": "quantitative",
-                    "title": "Online purchase growth (%)",
+                    "title": "Parcel volume growth (%)",
                     "scale": {
                         "type": "linear",
                         "domain": [0, 13],

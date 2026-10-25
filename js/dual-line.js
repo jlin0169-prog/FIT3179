@@ -77,7 +77,18 @@ const chart2 = {
                 "domain": [2019, 2025],
                 "nice": false
               },
-              "axis": null
+              "axis": {
+                "title": "Year",
+                "values": [2019, 2020, 2021, 2022, 2023, 2024, 2025],
+                "format": "d",
+                "labelAngle": 0,
+                "grid": false,
+                "domain": true,
+                "domainColor": "#CBD5E1",
+                "tickColor": "#CBD5E1",
+                "labelColor": "#56677B",
+                "titleColor": "#26384E"
+              }
             },
 
             "y": {
@@ -89,11 +100,15 @@ const chart2 = {
               },
               "axis": {
                 "title": "Annual change (%)",
+                "values": [-15, -12, -9, -6, -3, 0],
                 "grid": true,
                 "gridColor": "#E4EAF0",
                 "gridWidth": 1,
-                "domain": false,
-                "ticks": false,
+                "domain": true,
+                "domainColor": "#CBD5E1",
+                "domainWidth": 1,
+                "ticks": true,
+                "tickColor": "#CBD5E1",
                 "labelColor": "#56677B",
                 "titleColor": "#26384E"
               }
@@ -250,16 +265,20 @@ const chart2 = {
               "field": "Messaging",
               "type": "quantitative",
               "scale": {
-                "domain": [45, 85],
+                "domain": [0, 100],
                 "nice": false
               },
               "axis": {
                 "title": "Adults (%)",
+                "values": [0, 20, 40, 60, 80, 100],
                 "grid": true,
                 "gridColor": "#E4EAF0",
                 "gridWidth": 1,
-                "domain": false,
-                "ticks": false,
+                "domain": true,
+                "domainColor": "#CBD5E1",
+                "domainWidth": 1,
+                "ticks": true,
+                "tickColor": "#CBD5E1",
                 "labelColor": "#56677B",
                 "titleColor": "#26384E"
               }

@@ -6,7 +6,7 @@ const chart9 = {
     "background": null,
 
     "data": {
-        "url": "data/postal_network_radar.csv"
+        "url": "data/postal_network_change.csv"
     },
 
     "transform": [
@@ -18,7 +18,7 @@ const chart9 = {
             "as": "Change"
         },
         {
-            "calculate": "datum.Indicator == 'Parcel Lokcer banks' ? 'Parcel locker banks' : datum.Indicator",
+            "calculate": "datum.Indicator == 'Parcel Locker banks' ? 'Parcel locker banks' : datum.Indicator",
             "as": "IndicatorName"
         },
         {
@@ -98,7 +98,7 @@ const chart9 = {
                     "type": "nominal",
                     "scale": {
                         "domain": ["Increase", "Decrease"],
-                        "range": ["#e016dc", "#E58A43"]
+                        "range": ["#63813B", "#D65F8B"]
                     },
                     "legend": null
                 },
@@ -140,7 +140,7 @@ const chart9 = {
                 "dx": 7,
                 "fontSize": 12,
                 "fontWeight": "bold",
-                "color": "#e016dc"
+                "color": "#63813B"
             },
 
             "encoding": {
@@ -166,7 +166,7 @@ const chart9 = {
                 "dx": -7,
                 "fontSize": 12,
                 "fontWeight": "bold",
-                "color": "#E58A43"
+                "color": "#D65F8B"
             },
 
             "encoding": {
