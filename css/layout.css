@@ -168,7 +168,7 @@ body {
     box-shadow: 0 6px 16px #172B4615;
 }
 
-/* CARD NUMBER */
+/* Card number */
 .overview-num {
     font-family: "Alike", serif;
     color: #3D709F;
@@ -249,7 +249,7 @@ body {
     letter-spacing: -0.4px;
 }
 
-/* Reduce gap between section header and first chart */
+/* Reduce the gap between section header and first chart */
 .story-section > .section-header {
     margin-bottom: -8px;
 }
@@ -451,14 +451,6 @@ body {
     color: #D96B98;
     font-weight: 700;
 }
-/* 
-.chart-9-increase {
-    background: #DC14D9;
-}
-
-.chart-9-decrease {
-    background: #E88942;
-} */
 
 /* Chart 10 */
 .legend-dot.postage {
@@ -706,7 +698,7 @@ body {
     border-top: 1px solid var(--border);
 }
 
-/* Main heading */
+/* Footer heading */
 .footer-heading {
     margin-bottom: 36px;
 }
@@ -759,7 +751,6 @@ body {
     line-height: 1.8;
 }
 
-
 /* APA-inspired hanging indentation */
 .footer-reference-list p {
     margin: 0 0 16px;
@@ -799,7 +790,6 @@ body {
     outline: 2px solid #1e5eb2;
     outline-offset: 3px;
 }
-
 
 /* Right column */
 .footer-right {

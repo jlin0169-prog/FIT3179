@@ -54,7 +54,7 @@ const chart3 = {
         },
 
         "layer": [
-            // Neutral connecting lines
+            // Connecting lines between the points
             {
                 "mark": {
                     "type": "rule",
@@ -172,8 +172,7 @@ const chart3 = {
                 }
             },
 
-
-            // Connector lines for FY2025 annotations
+            // FY2025 annotations line
             {
                 "transform": [
                     { "filter": "datum.Year === 'FY2025'" },

@@ -47,7 +47,6 @@ const chart11 = {
     }
   },
 
-
   "layer": [
     // Forecast scenario envelope
     {
@@ -308,7 +307,7 @@ const chart11 = {
       ]
     },
 
-    // Diagonal connector pointing upwards to the right
+    // Annotation line 
     {
       "data": {
         "values": [

@@ -221,7 +221,7 @@ const chart10 = {
             }
         },
 
-        // Financial services annotation connector
+        // Financial services annotation lines
         {
             "data": {
                 "values": [{

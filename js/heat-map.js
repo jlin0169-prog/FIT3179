@@ -133,7 +133,7 @@ const chart4 = {
             }
         },
 
-        // First observation: July 2013
+        // Highlight the first cell: July 2013
         chart4Highlight(
             "datum.Year == 2013 && datum.Month == 'Jul'",
             "#603D65",
@@ -155,14 +155,14 @@ const chart4 = {
             3
         ),
 
-        // Last observation: June 2025
+        // Highlight the last cell: June 2025
         chart4Highlight(
             "datum.Year == 2025 && datum.Month == 'Jun'",
             "#FFFFFF",
             2.5
         ),
 
-        // First observation label: 2.1%
+        // First cell label: 2.1%
         chart4Label(
             "datum.Year == 2013 && datum.Month == 'Jul'",
             "#603D65"
@@ -181,7 +181,7 @@ const chart4 = {
             "#FFFFFF"
         ),
 
-        // Last observation label: 12.7%
+        // Last cell label: 12.7%
         chart4Label(
             "datum.Year == 2025 && datum.Month == 'Jun'",
             "#FFFFFF"

@@ -159,7 +159,6 @@ const chart2 = {
           }
         },
 
-
         // Highlight selected letter data point
         {
           "transform": [

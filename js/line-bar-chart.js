@@ -254,7 +254,7 @@ const chart1 = {
             }
         },
 
-        // Gold connector line
+        // Gold annotation line
         {
             "data": {
                 "values": [
@@ -340,7 +340,7 @@ const chart1 = {
             }
         },
 
-        // Blue connector pointing to TOP of 2024 bar
+        // Blue annotation line
         {
             "data": {
                 "values": [
@@ -379,7 +379,7 @@ const chart1 = {
             }
         },
 
-        // Blue annotation text above 2024 bar
+        // Blue annotation text
         {
             "data": {
                 "values": [
